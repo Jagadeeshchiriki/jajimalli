@@ -1,0 +1,162 @@
+.section {
+  position: relative;
+  height: 270vh;
+  min-height: 2000px;
+  background: var(--cream);
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  min-height: 620px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.pair {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+}
+
+.image {
+  position: absolute;
+  overflow: hidden;
+  background: #d9d3c7;
+  box-shadow: 0 24px 65px rgba(11, 14, 9, .22);
+  will-change: transform;
+}
+
+.image img {
+  object-fit: cover;
+}
+
+.cardOne {
+  left: 4%;
+  top: 1%;
+  width: min(30vw, 565px);
+  height: 78vh;
+}
+
+.cardTwo {
+  right: 5%;
+  top: 7%;
+  width: min(31vw, 580px);
+  height: 48vh;
+}
+
+.cardThree {
+  left: 5.5%;
+  top: 18%;
+  width: min(39vw, 750px);
+  height: 62vh;
+}
+
+.cardFour {
+  right: 5.5%;
+  top: 20%;
+  width: min(27vw, 515px);
+  height: 75vh;
+}
+
+.copy {
+  position: relative;
+  z-index: 4;
+  width: min(920px, calc(100% - 48px));
+  text-align: center;
+  will-change: transform;
+}
+
+.copy h2 {
+  color: #171713;
+  font-size: clamp(42px, 4.7vw, 69px);
+}
+
+.copy p {
+  margin: 30px auto 25px;
+  color: #31342f;
+  font: 17px/1.9 Georgia, serif;
+}
+
+.copy a {
+  display: inline-flex;
+  background: var(--green);
+  color: white;
+  padding: 13px 36px;
+  font: 12px Georgia, serif;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+@media (max-width: 800px) {
+  .section {
+    height: 270vh;
+    min-height: 1900px;
+  }
+
+  .stage {
+    min-height: 570px;
+  }
+
+  .cardOne { left: 4%; top: 11%; width: 43vw; height: 56vh; }
+  .cardTwo { right: 4%; top: 15%; width: 39vw; height: 38vh; }
+  .cardThree { left: 4%; top: 18%; width: 48vw; height: 46vh; }
+  .cardFour { right: 4%; top: 20%; width: 40vw; height: 55vh; }
+
+  .copy {
+    width: calc(100% - 40px);
+  }
+
+  .copy h2 {
+    font-size: clamp(40px, 12vw, 58px);
+  }
+
+  .copy p {
+    margin-top: 22px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 24px;
+  }
+
+  .stage {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .pair {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    display: flex;
+    gap: 18px;
+  }
+
+  .image {
+    position: relative;
+    inset: auto;
+    width: calc(50% - 9px);
+    height: 300px;
+    transform: none;
+  }
+
+  .copy {
+    margin-top: 42px;
+    transform: none;
+  }
+}

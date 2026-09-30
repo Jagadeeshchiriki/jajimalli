@@ -1,0 +1,189 @@
+.page {
+  background: var(--cream);
+  color: #183e34;
+}
+
+.hero {
+  position: relative;
+  min-height: 680px;
+  height: 88svh;
+  max-height: 920px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+}
+
+.hero > img {
+  z-index: -2;
+  object-fit: cover;
+}
+
+.heroShade {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(12, 20, 17, .08) 35%, rgba(12, 20, 17, .7));
+}
+
+.heroCopy {
+  width: 100%;
+  padding: 0 6% clamp(55px, 8vw, 110px);
+  color: white;
+}
+
+.heroCopy p,
+.introHeading > p,
+.offerings > p {
+  margin: 0 0 18px;
+  font: 600 10px/1 Arial, sans-serif;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.heroCopy h1 {
+  margin: 0;
+  font-size: clamp(70px, 10vw, 180px);
+  font-weight: 400;
+  line-height: .84;
+  letter-spacing: -.04em;
+}
+
+.heroCopy > span {
+  display: block;
+  margin-top: 30px;
+  font: 400 clamp(16px, 1.5vw, 24px)/1.4 Arial, sans-serif;
+  text-transform: capitalize;
+}
+
+.intro {
+  padding: clamp(100px, 12vw, 210px) 7%;
+  display: grid;
+  grid-template-columns: 1.35fr .65fr;
+  align-items: end;
+  gap: 8vw;
+}
+
+.introHeading h2 {
+  margin: 0;
+  color: #171713;
+  font-size: clamp(52px, 6.4vw, 108px);
+  font-weight: 400;
+  line-height: .94;
+  letter-spacing: -.035em;
+}
+
+.description {
+  margin: 0 0 8px;
+  color: #31584e;
+  font: 400 clamp(15px, 1.15vw, 20px)/1.75 Arial, sans-serif;
+}
+
+.offerings {
+  padding: 40px 7% clamp(130px, 14vw, 240px);
+}
+
+.offerings > h2 {
+  margin: 0 0 50px;
+  color: #171713;
+  font-size: clamp(54px, 7vw, 120px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.offering {
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  align-items: center;
+  min-height: 120px;
+  border-top: 1px solid rgba(49, 88, 78, .38);
+}
+
+.offering:last-child {
+  border-bottom: 1px solid rgba(49, 88, 78, .38);
+}
+
+.offering > span {
+  font: 600 10px/1 Arial, sans-serif;
+  letter-spacing: .12em;
+}
+
+.offering > span:last-child {
+  justify-self: end;
+  font-size: 18px;
+}
+
+.offering h3 {
+  margin: 0;
+  color: #171713;
+  font-size: clamp(30px, 3vw, 54px);
+  font-weight: 400;
+  transition: color .3s ease, transform .45s cubic-bezier(.22, 1, .36, 1);
+}
+
+.offering:hover h3 {
+  color: #9c6800;
+  transform: translateX(10px);
+}
+
+.backLink {
+  display: inline-flex;
+  margin-top: 55px;
+  padding: 14px 22px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font: 600 11px/1 Arial, sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: background .3s ease, color .3s ease;
+}
+
+.backLink:hover {
+  background: #31584e;
+  color: white;
+}
+
+@media (max-width: 800px) {
+  .hero {
+    min-height: 620px;
+    height: 78svh;
+  }
+
+  .heroCopy {
+    padding: 0 20px 55px;
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(64px, 20vw, 100px);
+  }
+
+  .intro {
+    padding: 90px 20px;
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .introHeading h2 {
+    font-size: clamp(48px, 14vw, 68px);
+  }
+
+  .offerings {
+    padding: 30px 20px 120px;
+  }
+
+  .offering {
+    grid-template-columns: 32px 1fr 28px;
+    min-height: 95px;
+  }
+
+  .offering h3 {
+    font-size: 29px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offering h3,
+  .backLink {
+    transition: none;
+  }
+}

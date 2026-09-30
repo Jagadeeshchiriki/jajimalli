@@ -1,0 +1,235 @@
+.section {
+  position: relative;
+  height: 480svh;
+  overflow: clip;
+  background: var(--cream);
+  color: var(--ink);
+  isolation: isolate;
+}
+
+.stickyLayer {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, rgba(55, 89, 78, 0.08), transparent 36%),
+    var(--cream);
+}
+
+.canvasLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.webglMount,
+.webglMount canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(245, 240, 228, 0.72), transparent 12%, transparent 88%, rgba(245, 240, 228, 0.72)),
+    radial-gradient(circle at center, transparent 42%, rgba(245, 240, 228, 0.08) 70%, rgba(245, 240, 228, 0.48) 100%);
+  pointer-events: none;
+}
+
+.titleBlock {
+  position: absolute;
+  top: clamp(48px, 7svh, 78px);
+  left: 50%;
+  z-index: 2;
+  width: min(90vw, 800px);
+  text-align: center;
+  transform: translateX(-50%);
+  will-change: transform, opacity;
+}
+
+.titleBlock > span {
+  display: block;
+  margin-bottom: 13px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(19px, 1.65vw, 28px);
+  font-style: italic;
+  color: var(--ink);
+}
+
+.titleBlock h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 5.4vw, 78px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+
+.titleBlock p {
+  margin: 30px 0 0;
+  color: rgba(23, 23, 19, 0.58);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.progress {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  color: rgba(23, 23, 19, 0.72);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.progress::before {
+  width: 1px;
+  height: 72px;
+  background: rgba(23, 23, 19, 0.2);
+  content: "";
+}
+
+.progressFill {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1px;
+  height: 72px;
+  background: var(--green);
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+.progress p {
+  margin: 0 0 -3px;
+}
+
+.copyLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  padding-bottom: 2rem;
+  pointer-events: none;
+}
+
+.firstStatement,
+.finalStatement {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+
+.firstStatement {
+  width: min(40vw, 570px);
+  margin-left: 16.666%;
+  padding-top: 100svh;
+}
+
+.firstStatement p,
+.finalStatement p {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(28px, 3vw, 48px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+
+.copySpacer {
+  height: 100svh;
+}
+
+.finalStatement {
+  justify-content: flex-end;
+  padding: 14svh 7vw 0 52vw;
+}
+
+.finalStatement p {
+  max-width: 650px;
+}
+
+@media (max-width: 800px) {
+  .section {
+    height: 430svh;
+  }
+
+  .titleBlock h2 {
+    font-size: clamp(42px, 12vw, 58px);
+  }
+
+  .titleBlock p {
+    max-width: 240px;
+    margin: 22px auto 0;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .firstStatement {
+    width: auto;
+    margin: 0;
+    padding: 100svh 24px 0;
+    align-items: center;
+  }
+
+  .firstStatement p,
+  .finalStatement p {
+    max-width: 82vw;
+    font-size: clamp(27px, 8.5vw, 40px);
+  }
+
+  .finalStatement {
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 0 24px 17svh;
+  }
+
+  .progress {
+    right: 16px;
+    bottom: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+    padding: 90px 20px;
+  }
+
+  .stickyLayer {
+    position: relative;
+    height: auto;
+    overflow: visible;
+    background: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .titleBlock {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0 auto 60px;
+    transform: none;
+    order: -1;
+  }
+
+  .canvasLayer {
+    position: relative;
+    height: 72svh;
+    order: 0;
+  }
+
+  .copyLayer,
+  .progress {
+    display: none;
+  }
+}

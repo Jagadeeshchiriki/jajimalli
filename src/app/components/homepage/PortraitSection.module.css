@@ -1,0 +1,371 @@
+.section {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #d8c6b3;
+}
+
+.background {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.background img {
+  object-fit: cover;
+  object-position: center;
+  filter: blur(14px);
+  transform: scale(1.015);
+  transition: transform 1.1s cubic-bezier(.22, 1, .36, 1);
+}
+
+.backgroundShade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: rgba(0, 0, 0, .3);
+  pointer-events: none;
+}
+
+.marquee {
+  position: absolute;
+  z-index: 2;
+  top: 30%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  color: rgba(255, 255, 255, .9);
+  pointer-events: none;
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marqueeScroll 42s linear infinite;
+}
+
+.marqueeGroup {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.marqueeGroup span {
+  display: block;
+  margin-right: 2vw;
+  font-size: clamp(54px, 9.2vw, 176px);
+  font-weight: 100;
+  line-height: 1;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+.marqueeGroup span::after {
+  content: "•";
+  margin-left: .65em;
+  font-size: .38em;
+  vertical-align: middle;
+}
+
+.woman {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: -1px;
+  width: 100vw;
+  line-height: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.woman img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.services {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+}
+
+.serviceLink {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  outline: none;
+}
+
+.spa {
+  top: 35%;
+  left: 10%;
+}
+
+.laser {
+  top: 68%;
+  left: 43%;
+}
+
+.academy {
+  top: 35%;
+  right: 9%;
+  flex-direction: row-reverse;
+}
+
+.marker {
+  position: relative;
+  width: clamp(38px, 3.2vw, 50px);
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: 50%;
+  background: #f5f0e4;
+  color: #31584e;
+  font: 600 clamp(9px, .65vw, 12px)/1 Arial, sans-serif;
+  letter-spacing: .08em;
+  box-shadow: 0 0 0 0 rgba(245, 240, 228, .5);
+  animation: markerBackground 3.2s ease-in-out infinite;
+  transition: color .4s ease, background .4s ease, transform .55s cubic-bezier(.22, 1, .36, 1);
+}
+
+.marker::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px dashed rgba(255, 255, 255, .75);
+  border-radius: inherit;
+  animation: markerOrbit 8s linear infinite;
+}
+
+.marker::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(245, 240, 228, .8);
+  border-radius: inherit;
+  animation: markerRipple 2.4s ease-out infinite;
+}
+
+.marker > span {
+  position: relative;
+  z-index: 1;
+}
+
+.serviceInfo {
+  width: min(290px, 22vw);
+  margin-left: 15px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, .45);
+  background: rgba(245, 240, 228, .94);
+  color: #31584e;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transform: translateX(-16px);
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+  transition: opacity .35s ease, clip-path .6s cubic-bezier(.22, 1, .36, 1), transform .6s cubic-bezier(.22, 1, .36, 1);
+}
+
+.academy .serviceInfo {
+  margin-right: 15px;
+  margin-left: 0;
+  clip-path: inset(0 0 0 100%);
+  transform: translateX(16px);
+}
+
+.serviceLabel {
+  margin-bottom: 8px;
+  font: 600 9px/1 Arial, sans-serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.serviceTitle {
+  font: 400 clamp(22px, 1.8vw, 31px)/1 Georgia, "Times New Roman", serif;
+  letter-spacing: -.025em;
+}
+
+.serviceDescription {
+  margin-top: 11px;
+  font: 400 clamp(10px, .72vw, 13px)/1.45 Arial, sans-serif;
+}
+
+.serviceCta {
+  margin-top: 15px;
+  font: 600 10px/1 Arial, sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.serviceLink:hover .marker,
+.serviceLink:focus-visible .marker {
+  background: #dfbd72;
+  color: #244b40;
+  transform: scale(1.06);
+  animation: none;
+}
+
+.serviceLink:hover .marker::before,
+.serviceLink:focus-visible .marker::before {
+  border-style: solid;
+}
+
+.serviceLink:hover .serviceInfo,
+.serviceLink:focus-visible .serviceInfo {
+  opacity: 1;
+  clip-path: inset(0);
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.section:has(.serviceLink:hover) .background img {
+  transform: scale(1.035);
+}
+
+@keyframes marqueeScroll {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes markerBackground {
+  0%, 100% {
+    background: #f5f0e4;
+    box-shadow: 0 0 0 0 rgba(245, 240, 228, .4);
+  }
+
+  50% {
+    background: #dfbd72;
+    box-shadow: 0 0 0 7px rgba(245, 240, 228, .12);
+  }
+}
+
+@keyframes markerOrbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes markerRipple {
+  0% { opacity: .65; transform: scale(1); }
+  75%, 100% { opacity: 0; transform: scale(1.45); }
+}
+
+@media (max-width: 800px) {
+  .section {
+    aspect-ratio: 1;
+  }
+
+  .background {
+    position: absolute;
+  }
+
+  .marquee {
+    top: 20%;
+  }
+
+  .marqueeTrack {
+    animation-duration: 30s;
+  }
+
+  .marqueeGroup span {
+    font-size: 3rem;
+  }
+
+  .woman {
+    width: max(620px, 150vw);
+    bottom: 0;
+  }
+
+  .services {
+    inset: auto 14px 14px;
+    display: grid;
+    gap: 7px;
+  }
+
+  .serviceLink,
+  .spa,
+  .laser,
+  .academy {
+    position: static;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    flex-direction: initial;
+    border: 1px solid rgba(255, 255, 255, .42);
+    background: rgba(35, 55, 48, .72);
+    backdrop-filter: blur(10px);
+  }
+
+  .marker {
+    width: 36px;
+    border: 0;
+    border-right: 1px solid rgba(255, 255, 255, .34);
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .marker::before {
+    display: none;
+  }
+
+  .marker::after {
+    display: none;
+  }
+
+  .serviceInfo,
+  .academy .serviceInfo {
+    width: auto;
+    margin: 0;
+    padding: 9px 12px;
+    background: transparent;
+    color: #fff;
+    border: 0;
+    opacity: 1;
+    clip-path: none;
+    transform: none;
+    pointer-events: auto;
+    backdrop-filter: none;
+  }
+
+  .serviceLabel,
+  .serviceCta {
+    display: none;
+  }
+
+  .serviceTitle {
+    font-size: 18px;
+  }
+
+  .serviceDescription {
+    margin-top: 3px;
+    font-size: 9px;
+    line-height: 1.3;
+  }
+
+  .serviceLink:hover .marker,
+  .serviceLink:focus-visible .marker {
+    background: rgba(245, 240, 228, .95);
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .background img,
+  .marqueeTrack,
+  .marker,
+  .marker::before,
+  .marker::after,
+  .serviceInfo {
+    animation: none;
+    transition: none;
+  }
+}
