@@ -1,5 +1,5 @@
 .brand { display: block; width: clamp(125px, 12vw, 190px); line-height: 0; }
-.brand img { display: block; width: 100%; height: auto; }
+.brand svg { display: block; width: 100%; height: auto; overflow: visible; }
 
 @media (max-width: 800px) {
   .brand { width: 120px; }

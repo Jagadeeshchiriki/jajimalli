@@ -5,16 +5,16 @@ import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import academy from "../../images/homepage/servicesection/academy.png";
+import academy from "../../images/homepage/servicesection/academy2.png";
 import skinLaser from "../../images/homepage/servicesection/skinlaser.png";
-import spaSalon from "../../images/homepage/servicesection/spasalon.png";
+import spaSalon from "../../images/homepage/servicesection/salon.png";
 import styles from "./ServicesSection.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const services = [
-  { title: "Salon", image: spaSalon, position: "center" },
-  { title: "Skin & Laser", image: skinLaser, position: "center" },
+  { title: "Spa Salon", image: spaSalon, position: "center" },
+  { title: "Skin Lasers", image: skinLaser, position: "center" },
   { title: "Academy", image: academy, position: "center" },
 ];
 

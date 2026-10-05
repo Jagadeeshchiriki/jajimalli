@@ -2,32 +2,46 @@
 .brandLockup, .menuTrigger, .scrollTopButton { pointer-events: auto; }
 .brandLockup { display: flex; flex-direction: column; align-items: flex-start; transition: transform .55s cubic-bezier(.22,1,.36,1), opacity .35s ease; will-change: transform; }
 .brandLockup > a { width: clamp(190px, 12vw, 225px); }
-.brandLockup p { margin: 10px 0 0 9px; color: #111; font: 750 12px/1 Arial, sans-serif; white-space: nowrap; }
-.menuTrigger { min-width: 132px; height: 48px; margin-top: 30px; border: 1.25px solid #111; border-radius: 999px; color: #111; padding: 0 16px 0 27px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font: 700 20px/1 Arial, sans-serif; cursor: pointer; backdrop-filter: blur(8px); transition: transform .55s cubic-bezier(.22,1,.36,1), opacity .35s ease; will-change: transform; }
+.menuTrigger { width: 48px; min-width: 48px; height: 48px; margin-top: 30px; border: 0; background: transparent; color: #111; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .55s cubic-bezier(.22,1,.36,1), opacity .35s ease; will-change: transform; }
 .headerHidden .brandLockup,
 .headerHidden .menuTrigger { opacity: 0; transform: translateY(calc(-100% - 40px)); pointer-events: none; }
-.menuIcon { width: 16px; display: flex; flex-direction: column; gap: 2px; }
-.menuTrigger i { width: 16px; height: 4px; border-radius: 999px; display: block; background: currentColor; transition: opacity .25s ease, transform .45s cubic-bezier(.22,1,.36,1); }
+.menuIcon { width: 38px; display: flex; flex-direction: column; gap: 8px; }
+.menuTrigger i { width: 38px; height: 5px; border-radius: 999px; display: block; background: currentColor; transition: opacity .25s ease, transform .45s cubic-bezier(.22,1,.36,1); }
 .menuTrigger[aria-expanded="true"] .menuIcon { gap: 0; }
+.menuTrigger[aria-expanded="true"] { opacity: 0; pointer-events: none; }
 .menuTrigger[aria-expanded="true"] i:first-of-type { transform: translateY(4px) rotate(45deg); }
 .menuTrigger[aria-expanded="true"] i:nth-of-type(2) { opacity: 0; }
 .menuTrigger[aria-expanded="true"] i:last-of-type { transform: translateY(-4px) rotate(-45deg); }
-.menuOverlay { position: fixed; z-index: 50; inset: 0; pointer-events: none; visibility: hidden; transition: visibility 0s linear .65s; }
+.menuOverlay { position: fixed; z-index: 50; inset: 0; pointer-events: none; visibility: hidden; transition: visibility 0s linear .5s; }
 .menuOverlay.open { pointer-events: auto; visibility: visible; transition-delay: 0s; }
-.menuBackdrop { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: rgba(21,25,21,.38); opacity: 0; cursor: default; transition: opacity .5s ease; }
+.menuBackdrop { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: rgba(21,25,21,.14); opacity: 0; cursor: default; transition: opacity .4s ease; }
 .open .menuBackdrop { opacity: 1; }
-.menuPanel { position: absolute; top: 0; right: 0; width: min(460px, 92vw); height: 100%; padding: 125px 55px 45px; background: #f5f0e4; color: var(--green); display: flex; flex-direction: column; transform: translateX(102%); transition: transform .65s cubic-bezier(.76,0,.24,1); box-shadow: -20px 0 80px rgba(18,35,29,.13); }
-.open .menuPanel { transform: translateX(0); }
-.menuPanel > p { margin: 0 0 40px; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; }
-.menuPanel nav { display: flex; flex-direction: column; }
-.menuPanel nav a { display: flex; align-items: baseline; gap: 22px; padding: 17px 0; border-bottom: 1px solid rgba(55,89,78,.2); font: 400 clamp(38px, 4vw, 58px)/1 Georgia, serif; opacity: 0; transform: translateX(28px); transition: opacity .45s ease, transform .55s cubic-bezier(.22,1,.36,1); }
-.menuPanel nav a span { font: 9px Arial, sans-serif; letter-spacing: .16em; }
-.open .menuPanel nav a { opacity: 1; transform: translateX(0); }
-.open .menuPanel nav a:nth-child(1) { transition-delay: .22s; }
-.open .menuPanel nav a:nth-child(2) { transition-delay: .29s; }
-.open .menuPanel nav a:nth-child(3) { transition-delay: .36s; }
-.menuContact { margin-top: auto; display: flex; justify-content: space-between; gap: 20px; font-size: 10px; }
-.menuContact span { text-transform: uppercase; letter-spacing: .12em; }
+.menuPanel { position: absolute; top: 12px; right: 5.85%; width: min(430px, calc(100vw - 36px)); min-height: 405px; padding: 20px 18px 18px; border: 1px solid rgba(55,89,78,.12); border-radius: 24px; background: #f5f0e4; color: var(--green); opacity: 0; transform: translateY(-16px) scale(.94); transform-origin: top right; transition: opacity .32s ease, transform .5s cubic-bezier(.22,1,.36,1); box-shadow: 0 24px 70px rgba(18,35,29,.16); }
+.open .menuPanel { opacity: 1; transform: translateY(0) scale(1); }
+.menuClose { position: absolute; top: 35px; right: 0; width: 48px; height: 48px; margin: 0; padding: 0; border: 0; background: transparent; color: #111; display: grid; place-items: center; cursor: pointer; }
+.menuClose span { position: relative; width: 35px; height: 35px; display: block; transition: transform .45s cubic-bezier(.22,1,.36,1); }
+.menuClose span::before,
+.menuClose span::after { position: absolute; top: 16px; left: 1px; width: 34px; height: 4px; border-radius: 999px; background: currentColor; content: ""; }
+.menuClose span::before { transform: rotate(45deg); }
+.menuClose span::after { transform: rotate(-45deg); }
+.menuClose:hover span,
+.menuClose:focus-visible span { transform: rotate(90deg) scale(.9); }
+.menuClose:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 50%; }
+.menuPanel nav { display: flex; flex-direction: column; gap: 8px; margin-top: 90px; }
+.menuPanel nav a { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: space-between; overflow: hidden; padding: 18px 20px; border: 1px solid rgba(55,89,78,.16); border-radius: 16px; font: 500 clamp(30px, 2.4vw, 42px)/1 var(--font-cormorant-garamond), Georgia, serif; opacity: 0; transform: translateY(14px); transition: color .35s ease, opacity .35s ease, transform .5s cubic-bezier(.22,1,.36,1); }
+.menuPanel nav a::before { position: absolute; z-index: -1; inset: 0; background: var(--green); content: ""; transform: scaleX(0); transform-origin: right center; transition: transform .45s cubic-bezier(.22,1,.36,1); }
+.menuPanel nav a::after { content: "\2197"; font: 400 18px/1 Arial, sans-serif; transition: transform .4s cubic-bezier(.22,1,.36,1); }
+.open .menuPanel nav a { opacity: 1; transform: translateY(0); }
+.open .menuPanel nav a:hover,
+.open .menuPanel nav a:focus-visible { color: var(--cream); transform: translateY(-3px); }
+.menuPanel nav a:hover::before,
+.menuPanel nav a:focus-visible::before { transform: scaleX(1); transform-origin: left center; }
+.menuPanel nav a:hover::after,
+.menuPanel nav a:focus-visible::after { transform: translate(4px, -4px) rotate(8deg); }
+.menuPanel nav a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.open .menuPanel nav a:nth-child(1) { transition-delay: .1s; }
+.open .menuPanel nav a:nth-child(2) { transition-delay: .16s; }
+.open .menuPanel nav a:nth-child(3) { transition-delay: .22s; }
 .scrollTopButton { position: fixed; right: 24px; bottom: 24px; z-index: 70; width: 42px; height: 42px; padding: 0; display: grid; place-items: center; border: 1px solid rgba(30,30,25,.3); border-radius: 50%; background: rgba(245,240,228,.82); color: var(--green); box-shadow: 0 8px 28px rgba(23,23,19,.12); cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(12px) scale(.88); transition: opacity .3s ease, visibility .3s ease, transform .4s cubic-bezier(.22,1,.36,1), background .25s ease; backdrop-filter: blur(10px); }
 .scrollTopButton:hover { background: #f5f0e4; transform: translateY(-2px) scale(1); }
 .scrollTopButton:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
@@ -37,12 +51,16 @@
 @media (max-width: 800px) {
   .header { padding: 18px; }
   .brandLockup > a { width: 145px; }
-  .brandLockup p { margin: 7px 0 0 3px; font-size: 9px; }
-  .menuTrigger { min-width: 91px; height: 36px; margin-top: 8px; padding: 0 11px 0 17px; gap: 9px; font-size: 13px; }
-  .menuIcon, .menuTrigger i { width: 13px; }
+  .menuTrigger { width: 36px; min-width: 36px; height: 36px; margin-top: 8px; padding: 0; }
+  .menuIcon, .menuTrigger i { width: 22px; }
   .menuTrigger i { height: 3px; }
-  .menuPanel { width: 100%; padding: 115px 28px 35px; }
-  .menuContact { flex-direction: column; }
+  .menuPanel { top: 8px; right: 18px; width: min(390px, calc(100vw - 36px)); min-height: 360px; padding: 8px 6px 6px; }
+  .menuClose { top: 18px; right: 0; width: 36px; height: 36px; }
+  .menuClose span { width: 28px; height: 28px; }
+  .menuClose span::before,
+  .menuClose span::after { top: 13px; width: 28px; height: 3px; }
+  .menuPanel nav { margin-top: 70px; padding: 12px; border-radius: 20px; }
+  .menuPanel nav a { padding: 16px; font-size: clamp(30px, 10vw, 40px); }
   .scrollTopButton { right: 16px; bottom: 16px; width: 40px; height: 40px; }
 }
 

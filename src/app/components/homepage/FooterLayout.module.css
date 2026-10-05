@@ -1,5 +1,5 @@
 .footer {
-  padding: 145px 8.3% 32px;
+  padding: 90px 8.3% 32px;
   border-radius: 0;
   background: #fff;
   color: #31584e;
@@ -19,8 +19,10 @@
   text-align: left;
 }
 
-.brandWrap > a {
+.footerLogo {
+  display: block;
   width: clamp(205px, 12vw, 245px);
+  height: auto;
 }
 
 .brandWrap p {
@@ -43,7 +45,7 @@
   display: block;
   width: clamp(38px, 2.35vw, 48px);
   height: auto;
-  margin-inline: auto;
+  margin: 0 auto 20px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.5;
@@ -69,6 +71,13 @@
   margin-top: 22px;
 }
 
+.location .mapLink {
+  display: inline-block;
+  margin-top: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 .location .phoneIcon {
   width: 1em;
   height: 1em;
@@ -82,7 +91,7 @@
 
 .bottom {
   max-width: 1710px;
-  margin: 105px auto 0;
+  margin: 60px auto 0;
   padding: 40px 14px 0;
   border-top: 1px solid #52645e;
   display: flex;
@@ -94,15 +103,15 @@
 .socials {
   display: inline-flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 .socials svg {
-  width: clamp(24px, 1.5vw, 30px);
+  width: clamp(34px, 2.2vw, 44px);
   height: auto;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.7;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -114,7 +123,7 @@
 
 @media (max-width: 1100px) {
   .footer {
-    padding-top: 110px;
+    padding-top: 75px;
   }
 
   .main {
@@ -127,14 +136,14 @@
   }
 
   .bottom {
-    margin-top: 90px;
+    margin-top: 50px;
   }
 }
 
 @media (max-width: 800px) {
   .footer {
     min-height: 0;
-    padding: 70px 24px 30px;
+    padding: 50px 24px 30px;
     border-radius: 0;
   }
 
@@ -154,10 +163,9 @@
     text-align: center;
   }
 
-  .brandWrap > a {
+  .footerLogo {
     width: 190px;
     margin: auto;
-    text-align: left;
   }
 
   .brandWrap p {
@@ -175,7 +183,7 @@
   }
 
   .bottom {
-    margin-top: 60px;
+    margin-top: 40px;
     padding-top: 28px;
     flex-direction: column;
     gap: 14px;

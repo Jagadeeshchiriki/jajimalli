@@ -1,4 +1,5 @@
-import Brand from "./Brand";
+import Image from "next/image";
+import logo from "../../images/header/logo2.png";
 import styles from "./FooterLayout.module.css";
 
 function PinIcon() {
@@ -36,13 +37,54 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.main}>
-        <div className={styles.brandWrap}><Brand /><p>Beauty Beyond Occasions</p></div>
-        <div className={styles.location}><PinIcon /><h3>Location 1</h3><p>Chatrapati Rd, Opp Bean Board, BS Layout,<br />Seethammadhara, Vizag</p><a href="tel:+917093244555"><PhoneIcon /><span>+91 70932 44555</span></a></div>
-        <div className={styles.location}><PinIcon /><h3>Location 2</h3><p>Below Srinivasa Skin Hospital,<br />Rastrapathi Road, Tuni</p><a href="tel:+910000000000"><PhoneIcon /><span>+91 00000 00000</span></a></div>
+        <div className={styles.brandWrap}><Image className={styles.footerLogo} src={logo} alt="Jajimalli" sizes="(max-width: 800px) 190px, 245px" /><p>Beauty Beyond Occasions</p></div>
+        <div className={styles.location}>
+          <a
+            className={styles.mapLink}
+            href="https://maps.app.goo.gl/jcnZYVsiECVGaXV67"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Jajimalli Vizag location in Google Maps"
+          >
+            <PinIcon />
+          </a>
+          <p>Chatrapati Rd, Opp Bean Board, BS Layout,<br />Seethammadhara, Vizag</p>
+          <a href="tel:+917093244555"><PhoneIcon /><span>+91 70932 44555</span></a>
+        </div>
+        <div className={styles.location}>
+          <a
+            className={styles.mapLink}
+            href="https://maps.app.goo.gl/fDj6gRurn3MTcLEi9"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Jajimalli Tanuku location in Google Maps"
+          >
+            <PinIcon />
+          </a>
+          <p>Below Srinivasa Skin Hospital,<br />Rastrapathi Road, Tanuku</p>
+          <a href="tel:+910000000000"><PhoneIcon /><span>+91 00000 00000</span></a>
+        </div>
       </div>
       <div className={styles.bottom}>
         <span>© 2026 Jajimalli. All Rights Reserved</span>
-        <span className={styles.socials}><InstagramIcon /><YouTubeIcon /></span>
+        <span className={styles.socials}>
+          <a
+            href="https://www.instagram.com/jajimalli_spa_skinlasers/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Jajimalli on Instagram"
+          >
+            <InstagramIcon />
+          </a>
+          <a
+            href="https://www.youtube.com/@JajimalliVizag"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Jajimalli on YouTube"
+          >
+            <YouTubeIcon />
+          </a>
+        </span>
       </div>
     </footer>
   );

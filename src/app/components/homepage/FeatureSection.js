@@ -36,7 +36,7 @@ export default function FeatureSection() {
 
       timeline.fromTo(
         media,
-        { scale: 0.48, borderRadius: 30 },
+        { scale: 0.6, borderRadius: 30 },
         { scale: 1, borderRadius: 0, duration: 1, ease: "none" },
       );
 

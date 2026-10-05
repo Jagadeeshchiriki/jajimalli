@@ -1,5 +1,5 @@
 .section { min-height: 960px; padding: 85px 0 140px; overflow: hidden; }
-.section > h2 { text-align: center; font-size: clamp(45px, 4.5vw, 70px); }
+.section > h2 { text-align: center; font-family: var(--font-cormorant-garamond), serif; font-size: clamp(56px, 5.8vw, 92px); }
 .carousel { width: 100%; margin-top: 70px; display: flex; justify-content: flex-start; align-items: center; outline: none; touch-action: pan-y; }
 .carousel :global(.flickity-viewport) { position: relative; width: 100%; overflow: visible !important; cursor: grab; }
 .carousel :global(.flickity-viewport.is-pointer-down) { cursor: grabbing; }

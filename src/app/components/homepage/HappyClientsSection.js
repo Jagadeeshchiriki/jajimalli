@@ -4,16 +4,16 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import client01 from "../../images/homepage/happyclients/c84c958d-6f1c-44b3-90fe-6fe33b7bcd10.png";
-import client02 from "../../images/homepage/happyclients/d503a743-004f-48be-a8ec-de31af6c67c9.png";
-import client03 from "../../images/homepage/happyclients/happyclient.png";
-import client04 from "../../images/homepage/happyclients/hpcl3.jpeg";
-import client05 from "../../images/homepage/happyclients/IMG_0789.jpeg";
-import client06 from "../../images/homepage/happyclients/IMG_5213.jpeg";
-import client07 from "../../images/homepage/happyclients/IMG_6877.jpg";
-import client08 from "../../images/homepage/happyclients/IMG_7799.jpg";
-import client09 from "../../images/homepage/happyclients/IMG_8042.jpg";
-import client10 from "../../images/homepage/happyclients/IMG_8132.jpg";
+import client01 from "../../images/homepage/happyclients/jajimalli_client_01.jpg";
+import client02 from "../../images/homepage/happyclients/jajimalli_client_02.jpg";
+import client03 from "../../images/homepage/happyclients/jajimalli_client_03.jpg";
+import client04 from "../../images/homepage/happyclients/jajimalli_client_04.jpg";
+import client05 from "../../images/homepage/happyclients/jajimalli_client_05.jpg";
+import client06 from "../../images/homepage/happyclients/jajimalli_client_06.jpg";
+import client07 from "../../images/homepage/happyclients/jajimalli_client_07.jpg";
+import client08 from "../../images/homepage/happyclients/jajimalli_client_08.jpg";
+import client09 from "../../images/homepage/happyclients/jajimalli_client_09.jpg";
+import client10 from "../../images/homepage/happyclients/jajimalli_client_10.jpg";
 import styles from "./HappyClientsSection.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -72,7 +72,7 @@ function ClientCarousel3D({ progress }) {
         transparent: true,
         toneMapped: false,
       });
-      mesh = new THREE.Mesh(new THREE.PlaneGeometry(1.55, 1.28, 20, 1), material);
+      mesh = new THREE.Mesh(new THREE.PlaneGeometry(1.55, 1.85, 20, 1), material);
       mesh.userData.index = index;
       carousel.add(mesh);
       return mesh;
@@ -87,7 +87,7 @@ function ClientCarousel3D({ progress }) {
       radiusX: 7.25,
       depth: 7.2,
       cardWidth: 1.55,
-      cardHeight: 1.28,
+      cardHeight: 1.85,
     };
 
     const createCardGeometry = (width, height) => {
@@ -122,6 +122,11 @@ function ClientCarousel3D({ progress }) {
         texture.offset.y = 1 - texture.repeat.y;
       }
 
+      const edgeInset = 0.015;
+      texture.offset.x += texture.repeat.x * edgeInset;
+      texture.offset.y += texture.repeat.y * edgeInset;
+      texture.repeat.multiplyScalar(1 - edgeInset * 2);
+
       texture.needsUpdate = true;
     };
 
@@ -130,7 +135,7 @@ function ClientCarousel3D({ progress }) {
       layout.radiusX = mobile ? 3.25 : Math.min(7.5, Math.max(6.7, camera.aspect * 3.8));
       layout.depth = mobile ? 5.3 : 7.2;
       layout.cardWidth = mobile ? 0.8 : 1.55;
-      layout.cardHeight = mobile ? 0.7 : 1.28;
+      layout.cardHeight = mobile ? 1 : 1.85;
 
       cards.forEach((card) => {
         card.geometry.dispose();
@@ -230,8 +235,6 @@ export default function HappyClientsSection() {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const scrollProgressRef = useRef(0);
-  const progressBarRef = useRef(null);
-  const counterRef = useRef(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -252,22 +255,11 @@ export default function HappyClientsSection() {
           invalidateOnRefresh: true,
           onUpdate: ({ progress }) => {
             scrollProgressRef.current = progress;
-            if (counterRef.current) {
-              const current = Math.min(clientImages.length, Math.floor(progress * clientImages.length) + 1);
-              counterRef.current.textContent = String(current).padStart(2, "0");
-            }
           },
         },
       });
 
-      timeline
-        .to(title, { autoAlpha: 0, yPercent: -35, duration: 0.16, ease: "power1.in" }, 0.08)
-        .fromTo(
-          progressBarRef.current,
-          { scaleY: 0 },
-          { scaleY: 1, duration: 1, ease: "none" },
-          0,
-        );
+      timeline.to(title, { autoAlpha: 0, yPercent: -35, duration: 0.16, ease: "power1.in" }, 0.08);
     }, section);
 
     return () => context.revert();
@@ -291,10 +283,6 @@ export default function HappyClientsSection() {
           <p>Real moments. Beautiful transformations.</p>
         </div>
 
-        <div className={styles.progress} aria-hidden="true">
-          <span ref={progressBarRef} className={styles.progressFill} />
-          <p><span ref={counterRef}>01</span> — 10</p>
-        </div>
       </div>
 
       <div className={`${styles.copyLayer} sticky__layer pb-2`}>
@@ -310,7 +298,7 @@ export default function HappyClientsSection() {
         <div className={styles.finalStatement}>
           <p>
             More Than A Beauty Ritual.<br />
-            A Feeling You Carry With You.
+            A Feeling You CarryWith You.
           </p>
         </div>
       </div>

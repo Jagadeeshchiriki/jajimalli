@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { DM_Serif_Display } from "next/font/google";
-import introImage from "../images/servicepage/introsection.png";
-import LocationsSection from "./LocationsSection";
+import introImage from "../images/servicepage/hair.png";
 import { services } from "./serviceData";
 import styles from "./ServicesPage.module.css";
 
@@ -17,7 +16,6 @@ export default function ServicesPage() {
         <Image className={styles.heroImage} src={introImage} alt="Spa essentials arranged for a calming treatment" fill priority sizes="100vw" />
         <div className={styles.heroShade} />
         <div className={styles.heroCopy}>
-          <p>Our Services</p>
           <h1 className={displayFont.className}>
             <span className={styles.heroLine}>Beauty, Wellness &amp; Expertise</span>
             <span className={styles.heroLine}>— All In One Place</span>
@@ -47,8 +45,6 @@ export default function ServicesPage() {
         ))}
 
       </section>
-
-      <LocationsSection displayFontClass={displayFont.className} />
     </main>
   );
 }

@@ -7,6 +7,7 @@
   z-index: 3;
   padding: 0 7.5%;
   text-align: center;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: clamp(42px, 4.7vw, 69px);
   line-height: 1.3;
   pointer-events: none;
@@ -36,7 +37,7 @@
   height: 100vh;
   overflow: hidden;
   border-radius: 30px;
-  transform: scale(.48);
+  transform: scale(.6);
   transform-origin: center center;
   will-change: transform, border-radius;
 }

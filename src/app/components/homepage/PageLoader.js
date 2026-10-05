@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import logo from "../../images/header/logo.png";
-import styles from "./HeroSection.module.css";
+import logo from "../../images/header/logo2.png";
+import styles from "./PageLoader.module.css";
 
 export default function PageLoader() {
   const loaderRef = useRef(null);
@@ -21,9 +21,14 @@ export default function PageLoader() {
     if (!loader || !logoFill || !progressBar || !progressText) return;
 
     const state = { progress: 0 };
+    const startedAt = performance.now();
+    const minimumVisibleTime = 900;
     let finished = false;
+    let finishScheduled = false;
+    let progressTween;
     let completionTween;
     let exitTween;
+    let finishTimer;
 
     const renderProgress = () => {
       const progress = Math.min(1, Math.max(0, state.progress));
@@ -36,10 +41,11 @@ export default function PageLoader() {
     const finish = () => {
       if (finished) return;
       finished = true;
+      progressTween?.kill();
 
       completionTween = gsap.to(state, {
         progress: 1,
-        duration: 0.25,
+        duration: 0.3,
         ease: "power2.out",
         onUpdate: renderProgress,
         onComplete: () => {
@@ -47,8 +53,8 @@ export default function PageLoader() {
 
           exitTween = gsap.to(loader, {
             yPercent: -100,
-            duration: 1.05,
-            delay: 0.25,
+            duration: 0.7,
+            delay: 0.1,
             ease: "power4.inOut",
             onComplete: () => {
               loader.style.display = "none";
@@ -58,21 +64,43 @@ export default function PageLoader() {
       });
     };
 
+    const requestFinish = () => {
+      if (finished || finishScheduled) return;
+      finishScheduled = true;
+
+      const elapsed = performance.now() - startedAt;
+      finishTimer = window.setTimeout(finish, Math.max(0, minimumVisibleTime - elapsed));
+    };
+
     const handleHeroProgress = (event) => {
       const progress = Number(event.detail?.progress) || 0;
       state.progress = Math.max(state.progress, progress);
       renderProgress();
 
-      if (progress >= 1) finish();
+      if (progress >= 1) requestFinish();
     };
 
     renderProgress();
+    progressTween = gsap.to(state, {
+      progress: 0.88,
+      duration: 1.1,
+      ease: "power2.out",
+      onUpdate: renderProgress,
+    });
+
     window.addEventListener("jajimalli:hero-progress", handleHeroProgress);
-    const fallbackTimer = window.setTimeout(finish, 15000);
+    window.addEventListener("load", requestFinish, { once: true });
+
+    if (document.readyState === "complete") requestFinish();
+
+    const fallbackTimer = window.setTimeout(requestFinish, 1800);
 
     return () => {
       window.removeEventListener("jajimalli:hero-progress", handleHeroProgress);
+      window.removeEventListener("load", requestFinish);
       window.clearTimeout(fallbackTimer);
+      window.clearTimeout(finishTimer);
+      progressTween?.kill();
       completionTween?.kill();
       exitTween?.kill();
     };

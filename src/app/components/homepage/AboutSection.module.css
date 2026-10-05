@@ -46,7 +46,7 @@
   right: 5%;
   top: 7%;
   width: min(31vw, 580px);
-  height: 48vh;
+  height: 78vh;
 }
 
 .cardThree {
@@ -71,15 +71,32 @@
   will-change: transform;
 }
 
+.sectionGlass {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: rgba(181, 151, 119, .44);
+  backdrop-filter: blur(22px) saturate(1.12);
+  -webkit-backdrop-filter: blur(22px) saturate(1.12);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  will-change: opacity;
+}
+
 .copy h2 {
   color: #171713;
+  font-family: "Bodoni Moda", serif;
+  font-style: normal;
   font-size: clamp(42px, 4.7vw, 69px);
+  font-weight: 400;
+  letter-spacing: 1.2px;
 }
 
 .copy p {
   margin: 30px auto 25px;
   color: #31342f;
-  font: 17px/1.9 Georgia, serif;
+  font: 24px/1.9 "Bodoni Moda", serif;
 }
 
 .copy a {
@@ -87,7 +104,7 @@
   background: var(--green);
   color: white;
   padding: 13px 36px;
-  font: 12px Georgia, serif;
+  font: 18px  var(--font-dm-sans);
   border-radius: 8px;
   margin-top: 15px;
 }

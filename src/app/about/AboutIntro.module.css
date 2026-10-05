@@ -1,0 +1,344 @@
+.section {
+  position: relative;
+  z-index: 1;
+  height: 650vh;
+  min-height: 4300px;
+  background: #0c120f;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+}
+
+.heroMedia {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  will-change: transform, clip-path;
+}
+
+.heroMedia img {
+  object-fit: cover;
+}
+
+.firstHero img {
+  object-position: center center;
+}
+
+.secondHero {
+  z-index: 1;
+  clip-path: inset(100% 0 0 0);
+}
+
+.secondHero img {
+  object-position: center center;
+}
+
+.vignette {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(5, 10, 7, .48), transparent 30%, transparent 60%, rgba(5, 10, 7, .64)),
+    radial-gradient(ellipse 48% 42% at center, rgba(5, 10, 7, .42), rgba(5, 10, 7, .12) 64%, rgba(5, 10, 7, .24) 100%);
+}
+
+.backdrop {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(8, 15, 11, 0);
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+  will-change: backdrop-filter, background-color;
+}
+
+.heroCopy,
+.storyCopy {
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  left: 50%;
+  width: min(1000px, calc(100% - 48px));
+  text-align: center;
+  transform: translate(-50%, -50%);
+  will-change: transform, opacity;
+}
+
+.heroCopy > span,
+.storyText > span {
+  display: block;
+  margin-bottom: clamp(18px, 2.4vh, 30px);
+  color: rgba(255, 255, 255, .78);
+  font: 600 9px/1 Arial, sans-serif;
+  letter-spacing: .46em;
+  text-transform: uppercase;
+}
+
+.heroCopy h1 {
+  margin: 0;
+  font-family: var(--font-cormorant-garamond), Georgia, serif;
+  font-size: clamp(66px, 8.1vw, 142px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0em;
+  text-shadow: 0 3px 28px rgba(0, 0, 0, .62);
+  text-wrap: balance;
+  text-transform: uppercase;
+}
+
+.heroCopy p {
+  width: min(680px, 90%);
+  margin: clamp(28px, 4vh, 48px) auto 0;
+  color: #fff;
+  font: 500 clamp(17px, 1.4vw, 23px)/1.5 var(--font-cormorant-garamond), Georgia, serif;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, .82);
+  text-wrap: balance;
+}
+
+.storyCopy {
+  z-index: 7;
+  height: min(370px, 52vh);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.storyText {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  will-change: transform, opacity;
+}
+
+.storyText:nth-child(2) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.storyText h2 {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  font-family: var(--font-cormorant-garamond), Georgia, serif;
+  font-size: clamp(44px, 5.2vw, 82px);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+}
+
+.cardPair {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  pointer-events: none;
+}
+
+.card {
+  position: absolute;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 3px;
+  background: #cbc4b8;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .34);
+  will-change: transform;
+}
+
+.card img {
+  object-fit: cover;
+}
+
+.cardOne {
+  top: 5%;
+  left: 3.5%;
+  width: min(31vw, 590px);
+  height: 62vh;
+}
+
+.cardTwo {
+  top: 11%;
+  right: 5%;
+  width: min(24vw, 455px);
+  height: 75vh;
+}
+
+.cardThree {
+  top: 19%;
+  left: 4.5%;
+  width: min(36vw, 690px);
+  height: 58vh;
+}
+
+.cardFour {
+  top: 7%;
+  right: 4%;
+  width: min(25vw, 480px);
+  height: 79vh;
+}
+
+.scrollCue {
+  position: absolute;
+  z-index: 8;
+  right: 30px;
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: rgba(255, 255, 255, .72);
+  font: 600 8px/1 Arial, sans-serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.scrollCue i {
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .3);
+}
+
+.scrollCue i::after {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  content: "";
+  animation: scrollProgress 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollProgress {
+  0% { transform: translateX(-100%); }
+  48%, 58% { transform: translateX(0); }
+  100% { transform: translateX(105%); }
+}
+
+@media (max-width: 800px) {
+  .section {
+    height: 620vh;
+    min-height: 3900px;
+  }
+
+  .stage { min-height: 570px; }
+
+  .firstHero img { object-position: 58% center; }
+  .secondHero img { object-position: 54% center; }
+
+  .heroCopy,
+  .storyCopy {
+    width: calc(100% - 36px);
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(54px, 17vw, 82px);
+    line-height: .84;
+  }
+
+  .heroCopy p {
+    width: min(420px, 94%);
+    font-size: 16px;
+  }
+
+  .storyText h2 {
+    width: 94%;
+    font-size: clamp(37px, 11vw, 56px);
+    line-height: 1;
+  }
+
+  .cardOne { top: 12%; left: 3%; width: 48vw; height: 46vh; }
+  .cardTwo { top: 19%; right: 3%; width: 39vw; height: 53vh; }
+  .cardThree { top: 22%; left: 3%; width: 50vw; height: 42vh; }
+  .cardFour { top: 14%; right: 3%; width: 40vw; height: 57vh; }
+
+  .scrollCue {
+    right: 18px;
+    bottom: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+    min-height: 0;
+    background: var(--cream);
+  }
+
+  .stage {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    color: #171713;
+  }
+
+  .heroMedia.firstHero {
+    position: relative;
+    height: 100svh;
+    min-height: 620px;
+  }
+
+  .secondHero,
+  .backdrop,
+  .scrollCue {
+    display: none;
+  }
+
+  .heroCopy {
+    position: absolute;
+    top: min(50svh, 500px);
+    color: #fff;
+  }
+
+  .storyCopy {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    padding: 90px 24px 40px;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .storyText {
+    position: relative;
+    min-height: 300px;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  .storyText > span { color: #37594e; }
+
+  .cardPair {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    padding: 0 20px 20px;
+  }
+
+  .card {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 360px;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+  .card { height: 260px; }
+}

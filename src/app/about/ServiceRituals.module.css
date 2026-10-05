@@ -1,0 +1,156 @@
+.section {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(320px, .82fr) minmax(520px, 1.18fr);
+  gap: clamp(54px, 7vw, 130px);
+  min-height: 78svh;
+  padding: clamp(90px, 12vh, 150px) clamp(28px, 6vw, 110px);
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.intro {
+  align-self: center;
+  max-width: 560px;
+}
+
+.intro h2 {
+  margin: 0;
+  font-family: var(--font-cormorant-garamond), Georgia, serif;
+  font-size: clamp(52px, 5.4vw, 88px);
+  font-weight: 400;
+  line-height: .92;
+  letter-spacing: -.045em;
+}
+
+.intro > p {
+  max-width: 500px;
+  margin: clamp(28px, 4vh, 44px) 0 0;
+  color: #4c4d48;
+  font: 400 clamp(15px, 1.05vw, 18px)/1.7 Arial, sans-serif;
+}
+
+.serviceList {
+  align-self: center;
+  border-top: 1px solid rgba(23, 23, 19, .2);
+}
+
+.service {
+  position: relative;
+  display: grid;
+  grid-template-columns: 54px 1fr 34px;
+  align-items: center;
+  min-height: clamp(112px, 13vh, 152px);
+  overflow: hidden;
+  padding: 20px clamp(20px, 2.2vw, 36px);
+  border-bottom: 1px solid rgba(23, 23, 19, .2);
+  isolation: isolate;
+  transition: color .35s ease;
+}
+
+.serviceImage,
+.imageShade {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .5s cubic-bezier(.22, 1, .36, 1), transform .8s cubic-bezier(.22, 1, .36, 1);
+}
+
+.serviceImage {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.035);
+}
+
+.imageShade {
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(8, 13, 10, .74), rgba(8, 13, 10, .3));
+}
+
+.number {
+  font: 500 15px/1 var(--font-cormorant-garamond), Georgia, serif;
+}
+
+.title {
+  font: 600 clamp(17px, 1.35vw, 23px)/1.1 Arial, sans-serif;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.arrow {
+  justify-self: end;
+  font-size: 20px;
+  transition: transform .35s ease;
+}
+
+.service:hover,
+.service:focus-visible {
+  color: #fff;
+  outline: none;
+}
+
+.service:hover .serviceImage,
+.service:hover .imageShade,
+.service:focus-visible .serviceImage,
+.service:focus-visible .imageShade {
+  opacity: 1;
+}
+
+.service:hover .serviceImage,
+.service:focus-visible .serviceImage {
+  transform: scale(1);
+}
+
+.service:hover .arrow,
+.service:focus-visible .arrow {
+  transform: translateX(5px);
+}
+
+@media (max-width: 900px) {
+  .section {
+    grid-template-columns: 1fr;
+    gap: 70px;
+    padding: 90px 24px 100px;
+  }
+
+  .intro {
+    max-width: 650px;
+  }
+
+  .service {
+    min-height: 118px;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro h2 {
+    font-size: clamp(50px, 15vw, 68px);
+  }
+
+  .service {
+    grid-template-columns: 34px 1fr 24px;
+    min-height: 108px;
+    padding: 16px 14px;
+  }
+
+  .number { font-size: 13px; }
+  .title { font-size: 15px; }
+  .arrow { font-size: 17px; }
+}
+
+@media (hover: none) {
+  .service {
+    color: #fff;
+  }
+
+  .serviceImage,
+  .imageShade {
+    opacity: 1;
+  }
+
+  .serviceImage {
+    transform: none;
+  }
+}

@@ -87,9 +87,9 @@ export default function Header() {
 
       setShowScrollTop(currentScrollY > 400);
 
-      if (isOpen || currentScrollY <= 40) {
+      if (isOpen || currentScrollY <= 0) {
         setIsHeaderHidden(false);
-      } else if (scrollDifference > 6 && currentScrollY > 120) {
+      } else if (scrollDifference > 0) {
         setIsHeaderHidden(true);
       } else if (scrollDifference < -6) {
         setIsHeaderHidden(false);
@@ -130,16 +130,16 @@ export default function Header() {
       <header className={`${styles.header}${isHeaderHidden ? ` ${styles.headerHidden}` : ""}`}>
         <div className={styles.brandLockup}>
           <Brand />
-          <p>SPA SALON | SKIN LASER | ACADEMY</p>
         </div>
         <button
           className={styles.menuTrigger}
           type="button"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
           aria-controls="site-menu"
+          tabIndex={isOpen ? -1 : 0}
           onClick={() => setIsOpen((open) => !open)}
         >
-          <span>{isOpen ? "Close" : "Menu"}</span>
           <span className={styles.menuIcon} aria-hidden="true">
             <i /><i /><i />
           </span>
@@ -153,7 +153,7 @@ export default function Header() {
           tabIndex={showScrollTop ? 0 : -1}
           onClick={scrollToTop}
         >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
+          <svg viewBox="0 0 34 34" aria-hidden="true">
             <path d="M12 19V5M6.5 10.5 12 5l5.5 5.5" />
           </svg>
         </button>
@@ -162,18 +162,16 @@ export default function Header() {
       <div className={`${styles.menuOverlay}${isOpen ? ` ${styles.open}` : ""}`} aria-hidden={!isOpen}>
         <button className={styles.menuBackdrop} type="button" aria-label="Close menu" onClick={() => setIsOpen(false)} />
         <aside className={styles.menuPanel} id="site-menu">
-          <p>Explore Jajimalli</p>
+          <button className={styles.menuClose} type="button" aria-label="Close menu" onClick={() => setIsOpen(false)}>
+            <span aria-hidden="true" />
+          </button>
           <nav aria-label="Main navigation">
-            {links.map((link, index) => (
+            {links.map((link) => (
               <Link href={link.href} key={link.href} onClick={() => setIsOpen(false)}>
-                <span>0{index + 1}</span>{link.label}
+                {link.label}
               </Link>
             ))}
           </nav>
-          <div className={styles.menuContact}>
-            <span>Beauty beyond occasions</span>
-            <a href="tel:+917093244555">+91 70932 44555</a>
-          </div>
         </aside>
       </div>
     </>

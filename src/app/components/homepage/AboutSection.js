@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import academy from "../../images/homepage/servicesection/academy.png";
+import academy from "../../images/homepage/aboutsection/relax1.png";
 import happyClient from "../../images/homepage/happyclients/happyclient1.png";
-import skinLaser from "../../images/homepage/servicesection/skinlaser.png";
-import spaSalon from "../../images/homepage/servicesection/spasalon.png";
+import skinLaser from "../../images/homepage/aboutsection/interior.png";
+import spaSalon from "../../images/homepage/aboutsection/hair.png";
 import nail from "../../images/homepage/aboutsection/nailservice.png";
 import styles from "./AboutSection.module.css";
 
@@ -34,6 +34,10 @@ export default function AboutSection() {
     if (!section) return;
 
     const pairs = gsap.utils.toArray("[data-about-pair]", section);
+    const heading = section.querySelector("[data-about-heading]");
+    const bodyCopy = section.querySelector("[data-about-body]");
+    const glass = section.querySelector("[data-about-glass]");
+    const adaptiveText = [heading, bodyCopy].filter(Boolean);
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (prefersReducedMotion) return;
@@ -48,6 +52,28 @@ export default function AboutSection() {
           invalidateOnRefresh: true,
         },
       });
+
+      gsap.set(glass, { autoAlpha: 0 });
+
+      timeline.to(
+        glass,
+        {
+          autoAlpha: 1,
+          duration: 0.3,
+          ease: "power1.out",
+        },
+        0.25,
+      );
+
+      timeline.to(
+        adaptiveText,
+        {
+          color: "#fff",
+          duration: 0.3,
+          ease: "power1.out",
+        },
+        0.25,
+      );
 
       pairs.forEach((pair, pairIndex) => {
         const cards = pair.querySelectorAll("[data-about-card]");
@@ -82,7 +108,38 @@ export default function AboutSection() {
           },
           start + 1.4,
         );
+
       });
+
+      timeline.to(
+        glass,
+        {
+          autoAlpha: 0,
+          duration: 0.3,
+          ease: "power1.in",
+        },
+        5.1,
+      );
+
+      timeline.to(
+        heading,
+        {
+          color: "#171713",
+          duration: 0.3,
+          ease: "power1.in",
+        },
+        5.1,
+      );
+
+      timeline.to(
+        bodyCopy,
+        {
+          color: "#31342f",
+          duration: 0.3,
+          ease: "power1.in",
+        },
+        5.1,
+      );
 
     }, section);
 
@@ -92,6 +149,8 @@ export default function AboutSection() {
   return (
     <section ref={sectionRef} className={styles.section}>
       <div className={styles.stage}>
+        <div className={styles.sectionGlass} data-about-glass aria-hidden="true" />
+
         {imagePairs.map((pair, pairIndex) => (
           <div className={styles.pair} data-about-pair key={`pair-${pairIndex}`}>
             {pair.map((image) => (
@@ -110,9 +169,9 @@ export default function AboutSection() {
         ))}
 
         <div className={styles.copy} data-about-copy>
-          <h2>Beauty That Feels Personal</h2>
-          <p>We believe beauty is not simply about looking your best; it&apos;s about taking time for yourself and feeling confident in your own skin. Our thoughtfully designed beauty and wellness experiences bring together expert care, premium treatments, and a relaxing environment to make every visit a moment of indulgence and renewal.</p>
-          <Link href="/about">About Us</Link>
+          <h2 data-about-heading>Beauty That Feels Personal</h2>
+          <p data-about-body>We believe beauty is not simply about looking your best; it&apos;s about taking time for yourself and feeling confident in your own skin. Our thoughtfully designed beauty and wellness experiences bring together expert care, premium treatments, and a relaxing environment to make every visit a moment of indulgence and renewal.</p>
+          <Link href="/about">Explore More</Link>
         </div>
       </div>
     </section>

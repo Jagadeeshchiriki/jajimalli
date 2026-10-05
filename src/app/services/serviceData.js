@@ -1,25 +1,60 @@
 import spaSalon from "../images/servicepage/spasalon.png";
 import skinLaser from "../images/servicepage/skinlaser.png";
 import beautyAcademy from "../images/servicepage/beautyacademy1.png";
+import microblading from "../images/servicepage/microblading.png";
+import hydraFacial from "../images/servicepage/hrdrafacial.png";
+import bridalMakeup from "../images/homepage/bridalmakeup.png";
+import lipBlush from "../images/servicepage/lipblush.png";
+import liceTreatment from "../images/servicepage/lictreatment.png";
+import nanoplastia from "../images/servicepage/nanoplastia.png";
+import facial from "../images/servicepage/facial.png";
+import sareeDraping from "../images/servicepage/sareedraping.png";
+import hairCut from "../images/servicepage/haircut.png";
+import hairExtensions from "../images/servicepage/hairextentions.png";
+import hairStyle from "../images/servicepage/hairstyle.png";
+import mehendi from "../images/servicepage/mehandi.jpg";
+import electrolysis from "../images/servicepage/Electrolysis.png";
+import chemicalPeel from "../images/servicepage/chemical.png";
+import academyHair from "../images/servicepage/92ba156f-d412-44be-adeb-445a59a4215c.png";
+import academyNails from "../images/homepage/aboutsection/nailservice.png";
 
 export const services = [
   {
     slug: "spa-salon",
     title: "Spa Salon",
-    shortTitle: "Spa & Salon",
+    shortTitle: "Spa Salon",
     tagline: "Relax, rejuvenate & rediscover your glow",
     description: "A restorative collection of spa, hair and beauty rituals designed around the way you want to feel.",
+    offeringsTitle: "Signature Beauty & Salon Treatments",
     image: spaSalon,
-    offerings: ["Signature spa rituals", "Hair styling & care", "Bridal and occasion makeup", "Nail care & artistry"],
+    offerings: [
+      { title: "Microblading", image: microblading, description: "Precision brow artistry shaped to complement your natural features.", supporting: "Tailored mapping · Natural-looking definition" },
+      { title: "Hydra Facial", image: hydraFacial, description: "A deeply cleansing and hydrating ritual for fresh, luminous skin.", supporting: "Cleanse · Exfoliate · Hydrate" },
+      { title: "Bridal Makeup", image: bridalMakeup, description: "Refined bridal artistry designed around your features, attire and celebration.", supporting: "Personal consultation · Long-wear finish" },
+      { title: "Lip Blush", image: lipBlush, description: "Soft, balanced lip colour that enhances shape while retaining a natural finish.", supporting: "Custom tone · Delicate definition" },
+      { title: "Lice Treatment", image: liceTreatment, description: "Careful scalp and hair treatment delivered with comfort and discretion.", supporting: "Thorough care · Gentle process" },
+      { title: "Nanoplastia", image: nanoplastia, description: "A smoothing hair ritual created for polished movement, softness and shine.", supporting: "Frizz control · Silky finish" },
+      { title: "Facials", image: facial, description: "Personalised facial rituals selected for your skin's changing needs.", supporting: "Expert assessment · Restorative care" },
+      { title: "Saree Draping & Pre-Pleating", image: sareeDraping, description: "Elegant, secure draping prepared for effortless movement and a flawless silhouette.", supporting: "Occasion styling · Ready-to-wear pleats" },
+      { title: "Hair Cuts", image: hairCut, description: "Considered cuts shaped around your texture, lifestyle and personal style.", supporting: "Consultation · Precision shaping" },
+      { title: "Hair Extensions", image: hairExtensions, description: "Seamlessly blended length and volume with a natural, comfortable finish.", supporting: "Custom matching · Expert placement" },
+      { title: "Hair Styles", image: hairStyle, description: "Modern styling and occasion-ready looks shaped with lasting polish.", supporting: "Everyday finish · Event styling" },
+      { title: "Mehendi", image: mehendi, description: "Intricate traditional and contemporary designs created with a fine artistic hand.", supporting: "Bridal · Festive · Bespoke" },
+    ],
   },
   {
     slug: "skin-laser",
-    title: "Skin Laser",
-    shortTitle: "Skin & Laser",
+    title: "Skin Lasers",
+    shortTitle: "Skin Lasers",
     tagline: "Advanced care for healthier, radiant skin",
     description: "Thoughtful skin and laser solutions that combine advanced technology with attentive expert care.",
+    offeringsTitle: "Advanced Skin Lasers Treatments",
     image: skinLaser,
-    offerings: ["Laser hair reduction", "Skin rejuvenation", "Acne and scar care", "Pigmentation treatments"],
+    offerings: [
+      { title: "Laser Hair Removal", image: skinLaser, description: "Technology-led hair reduction planned around your skin and treatment goals.", supporting: "Personal plan · Expert-led sessions" },
+      { title: "Electrolysis Hair Removal", image: electrolysis, description: "Targeted permanent hair removal for precise, individual treatment areas.", supporting: "Fine precision · All skin tones" },
+      { title: "Chemical Peel", image: chemicalPeel, description: "A professional resurfacing treatment selected to renew clarity and texture.", supporting: "Skin assessment · Controlled renewal" },
+    ],
   },
   {
     slug: "beauty-academy",
@@ -27,8 +62,13 @@ export const services = [
     shortTitle: "Beauty Academy",
     tagline: "Learn. Create. Master the art of beauty.",
     description: "Professional, hands-on education created for aspiring artists ready to build skill and confidence.",
+    offeringsTitle: "Professional Beauty Courses",
     image: beautyAcademy,
-    offerings: ["Professional makeup", "Hair styling", "Skin and laser training", "Nail art and care"],
+    offerings: [
+      { title: "Professional Makeup", image: beautyAcademy, description: "Build confident technique across complexion, colour and occasion artistry.", supporting: "Demonstration · Guided practice" },
+      { title: "Hair Styling", image: academyHair, description: "Learn foundational and advanced styling through practical salon-led training.", supporting: "Technique · Form · Finish" },
+      { title: "Nail Art & Care", image: academyNails, description: "Master neat preparation, lasting finishes and expressive nail artistry.", supporting: "Care fundamentals · Creative design" },
+    ],
   },
 ];
 

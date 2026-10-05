@@ -49,6 +49,7 @@
 .heroLine {
   display: block;
   white-space: nowrap;
+  text-transform: uppercase;
 }
 
 .heroLine + .heroLine {
