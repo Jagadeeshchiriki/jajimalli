@@ -2,7 +2,7 @@
 .brandLockup, .menuTrigger, .scrollTopButton { pointer-events: auto; }
 .brandLockup { display: flex; flex-direction: column; align-items: flex-start; transition: transform .55s cubic-bezier(.22,1,.36,1), opacity .35s ease; will-change: transform; }
 .brandLockup > a { width: clamp(190px, 12vw, 225px); }
-.menuTrigger { width: 48px; min-width: 48px; height: 48px; margin-top: 30px; border: 0; background: transparent; color: #111; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .55s cubic-bezier(.22,1,.36,1), opacity .35s ease; will-change: transform; }
+.menuTrigger { width: 48px; min-width: 48px; height: 48px; margin-top: 30px; border: 0; border-radius: 5%; background: rgba(245, 240, 228, .92); color: #111; padding: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0, 0, 0, 0); cursor: pointer; transition: transform .55s cubic-bezier(.22,1,.36,1), opacity .35s ease, background .25s ease; will-change: transform; }
 .headerHidden .brandLockup,
 .headerHidden .menuTrigger { opacity: 0; transform: translateY(calc(-100% - 40px)); pointer-events: none; }
 .menuIcon { width: 38px; display: flex; flex-direction: column; gap: 8px; }
@@ -28,9 +28,9 @@
 .menuClose:focus-visible span { transform: rotate(90deg) scale(.9); }
 .menuClose:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 50%; }
 .menuPanel nav { display: flex; flex-direction: column; gap: 8px; margin-top: 90px; }
-.menuPanel nav a { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: space-between; overflow: hidden; padding: 18px 20px; border: 1px solid rgba(55,89,78,.16); border-radius: 16px; font: 500 clamp(30px, 2.4vw, 42px)/1 var(--font-cormorant-garamond), Georgia, serif; opacity: 0; transform: translateY(14px); transition: color .35s ease, opacity .35s ease, transform .5s cubic-bezier(.22,1,.36,1); }
+.menuPanel nav a { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: space-between; overflow: hidden; padding: 18px 20px; border: 1px solid rgba(55,89,78,.16); border-radius: 16px; font: 500 clamp(30px, 2.4vw, 42px)/1 var(--font-aboreto), serif; opacity: 0; transform: translateY(14px); transition: color .35s ease, opacity .35s ease, transform .5s cubic-bezier(.22,1,.36,1); }
 .menuPanel nav a::before { position: absolute; z-index: -1; inset: 0; background: var(--green); content: ""; transform: scaleX(0); transform-origin: right center; transition: transform .45s cubic-bezier(.22,1,.36,1); }
-.menuPanel nav a::after { content: "\2197"; font: 400 18px/1 Arial, sans-serif; transition: transform .4s cubic-bezier(.22,1,.36,1); }
+.menuPanel nav a::after { content: "\2197"; font: 400 18px/1 var(--font-afacad), sans-serif; transition: transform .4s cubic-bezier(.22,1,.36,1); }
 .open .menuPanel nav a { opacity: 1; transform: translateY(0); }
 .open .menuPanel nav a:hover,
 .open .menuPanel nav a:focus-visible { color: var(--cream); transform: translateY(-3px); }

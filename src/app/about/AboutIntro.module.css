@@ -79,16 +79,16 @@
   display: block;
   margin-bottom: clamp(18px, 2.4vh, 30px);
   color: rgba(255, 255, 255, .78);
-  font: 600 9px/1 Arial, sans-serif;
+  font: 600 9px/1 var(--font-afacad), sans-serif;
   letter-spacing: .46em;
   text-transform: uppercase;
 }
 
 .heroCopy h1 {
   margin: 0;
-  font-family: var(--font-cormorant-garamond), Georgia, serif;
-  font-size: clamp(66px, 8.1vw, 142px);
-  font-weight: 700;
+  font-family: var(--font-aboreto), serif;
+  font-size: clamp(54px,5.4vw, 88px);
+  font-weight: 500;
   line-height: 1;
   letter-spacing: 0em;
   text-shadow: 0 3px 28px rgba(0, 0, 0, .62);
@@ -100,7 +100,7 @@
   width: min(680px, 90%);
   margin: clamp(28px, 4vh, 48px) auto 0;
   color: #fff;
-  font: 500 clamp(17px, 1.4vw, 23px)/1.5 var(--font-cormorant-garamond), Georgia, serif;
+  font: 500 clamp(17px, 1.4vw, 23px)/1.5 var(--font-afacad), sans-serif;
   text-shadow: 0 2px 16px rgba(0, 0, 0, .82);
   text-wrap: balance;
 }
@@ -130,10 +130,10 @@
 .storyText h2 {
   width: min(900px, 100%);
   margin: 0 auto;
-  font-family: var(--font-cormorant-garamond), Georgia, serif;
-  font-size: clamp(44px, 5.2vw, 82px);
+  font-family: var(--font-aboreto), serif;
+  font-size: clamp(42px, 4.7vw, 46px);
   font-weight: 400;
-  line-height: .98;
+  line-height: 1.5;
   letter-spacing: -.01em;
   text-wrap: balance;
 }
@@ -196,7 +196,7 @@
   align-items: center;
   gap: 14px;
   color: rgba(255, 255, 255, .72);
-  font: 600 8px/1 Arial, sans-serif;
+  font: 600 8px/1 var(--font-afacad), sans-serif;
   letter-spacing: .18em;
   text-transform: uppercase;
 }
@@ -252,7 +252,7 @@
 
   .storyText h2 {
     width: 94%;
-    font-size: clamp(37px, 11vw, 56px);
+    font-size: clamp(40px, 12vw, 58px);
     line-height: 1;
   }
 

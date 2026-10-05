@@ -42,12 +42,13 @@
 
 .copy h2 {
   margin: 0;
-  font-family: var(--font-cormorant-garamond), Georgia, serif;
-  font-size: clamp(48px, 5.4vw, 92px);
-  font-weight: 400;
-  line-height: .92;
+  font-family: var(--font-aboreto), serif;
+  font-size: clamp(42px, 4.7vw, 49px);
+  font-weight: 500;
+  line-height: 1.21;
   letter-spacing: -.045em;
   text-wrap: balance;
+  text-transform: capitalize;
 }
 
 .body {
@@ -58,7 +59,7 @@
 .body p {
   margin: 0;
   color: #464842;
-  font: 400 clamp(15px, 1.1vw, 18px)/1.75 Arial, sans-serif;
+  font: 400 clamp(15px, 1.1vw, 18px)/1.75 var(--font-afacad), sans-serif;
 }
 
 .body p + p {

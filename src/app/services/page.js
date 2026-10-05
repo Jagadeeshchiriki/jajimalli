@@ -1,11 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { DM_Serif_Display } from "next/font/google";
-import introImage from "../images/servicepage/hair.png";
+import introImage from "../images/servicepage/about_intro.png";
 import { services } from "./serviceData";
 import styles from "./ServicesPage.module.css";
-
-const displayFont = DM_Serif_Display({ subsets: ["latin"], weight: "400" });
 
 export const metadata = { title: "Services" };
 
@@ -16,7 +13,7 @@ export default function ServicesPage() {
         <Image className={styles.heroImage} src={introImage} alt="Spa essentials arranged for a calming treatment" fill priority sizes="100vw" />
         <div className={styles.heroShade} />
         <div className={styles.heroCopy}>
-          <h1 className={displayFont.className}>
+          <h1>
             <span className={styles.heroLine}>Beauty, Wellness &amp; Expertise</span>
             <span className={styles.heroLine}>— All In One Place</span>
           </h1>
@@ -34,7 +31,7 @@ export default function ServicesPage() {
           >
             <span className={styles.serviceNumber}>0{index + 1}</span>
             <span className={styles.serviceCopy}>
-              <span className={`${styles.serviceTitle} ${displayFont.className}`}>{service.title}</span>
+              <span className={styles.serviceTitle}>{service.title}</span>
               <span className={styles.serviceTagline}>{service.tagline}</span>
             </span>
             <span className={styles.preview} aria-hidden="true">

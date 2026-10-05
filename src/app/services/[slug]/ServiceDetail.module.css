@@ -34,7 +34,7 @@
 
 .heroCopy h1 {
   margin: 0;
-  font-size: clamp(70px, 10vw, 180px);
+  font-size: clamp(70px, 10vw, 100px);
   font-weight: 400;
   line-height: .84;
   letter-spacing: -.04em;
@@ -42,8 +42,9 @@
 
 .heroCopy > span {
   display: block;
+  width: 50%;
   margin-top: 30px;
-  font: 400 clamp(16px, 1.5vw, 24px)/1.4 Arial, sans-serif;
+  font: 400 clamp(16px, 1.5vw, 24px)/1.4 var(--font-afacad), sans-serif;
   text-transform: capitalize;
 }
 
@@ -72,7 +73,7 @@
 }
 
 .offering > span {
-  font: 600 10px/1 Arial, sans-serif;
+  font: 600 10px/1 var(--font-afacad), sans-serif;
   letter-spacing: .12em;
 }
 
@@ -100,7 +101,7 @@
   padding: 14px 22px;
   border: 1px solid currentColor;
   border-radius: 999px;
-  font: 600 11px/1 Arial, sans-serif;
+  font: 600 11px/1 var(--font-afacad), sans-serif;
   letter-spacing: .1em;
   text-transform: uppercase;
   transition: background .3s ease, color .3s ease;

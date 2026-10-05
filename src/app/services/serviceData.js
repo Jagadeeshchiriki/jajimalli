@@ -2,21 +2,22 @@ import spaSalon from "../images/servicepage/spasalon.png";
 import skinLaser from "../images/servicepage/skinlaser.png";
 import beautyAcademy from "../images/servicepage/beautyacademy1.png";
 import microblading from "../images/servicepage/microblading.png";
-import hydraFacial from "../images/servicepage/hrdrafacial.png";
+import hydraFacial from "../images/servicepage/hydrafacial.png";
 import bridalMakeup from "../images/homepage/bridalmakeup.png";
-import lipBlush from "../images/servicepage/lipblush.png";
-import liceTreatment from "../images/servicepage/lictreatment.png";
+import lipBlush from "../images/servicepage/Lip_blush.jpg";
+import liceTreatment from "../images/servicepage/lice-treatment.png";
 import nanoplastia from "../images/servicepage/nanoplastia.png";
 import facial from "../images/servicepage/facial.png";
 import sareeDraping from "../images/servicepage/sareedraping.png";
 import hairCut from "../images/servicepage/haircut.png";
 import hairExtensions from "../images/servicepage/hairextentions.png";
 import hairStyle from "../images/servicepage/hairstyle.png";
-import mehendi from "../images/servicepage/mehandi.jpg";
+import Mehndi from "../images/servicepage/mehndi.webp";
 import electrolysis from "../images/servicepage/Electrolysis.png";
 import chemicalPeel from "../images/servicepage/chemical.png";
-import academyHair from "../images/servicepage/92ba156f-d412-44be-adeb-445a59a4215c.png";
-import academyNails from "../images/homepage/aboutsection/nailservice.png";
+import academyHair from "../images/servicepage/hairstyle.png";
+import academyNails from "../images/servicepage/nailart1.png";
+import professionalMakeup from "../images/servicepage/professionalmakeup1.png";
 
 export const services = [
   {
@@ -39,7 +40,7 @@ export const services = [
       { title: "Hair Cuts", image: hairCut, description: "Considered cuts shaped around your texture, lifestyle and personal style.", supporting: "Consultation · Precision shaping" },
       { title: "Hair Extensions", image: hairExtensions, description: "Seamlessly blended length and volume with a natural, comfortable finish.", supporting: "Custom matching · Expert placement" },
       { title: "Hair Styles", image: hairStyle, description: "Modern styling and occasion-ready looks shaped with lasting polish.", supporting: "Everyday finish · Event styling" },
-      { title: "Mehendi", image: mehendi, description: "Intricate traditional and contemporary designs created with a fine artistic hand.", supporting: "Bridal · Festive · Bespoke" },
+      { title: "Mehndi", image: Mehndi, description: "Intricate traditional and contemporary designs created with a fine artistic hand.", supporting: "Bridal · Festive · Bespoke" },
     ],
   },
   {
@@ -65,7 +66,7 @@ export const services = [
     offeringsTitle: "Professional Beauty Courses",
     image: beautyAcademy,
     offerings: [
-      { title: "Professional Makeup", image: beautyAcademy, description: "Build confident technique across complexion, colour and occasion artistry.", supporting: "Demonstration · Guided practice" },
+      { title: "Professional Makeup", image: professionalMakeup, description: "Build confident technique across complexion, colour and occasion artistry.", supporting: "Demonstration · Guided practice" },
       { title: "Hair Styling", image: academyHair, description: "Learn foundational and advanced styling through practical salon-led training.", supporting: "Technique · Form · Finish" },
       { title: "Nail Art & Care", image: academyNails, description: "Master neat preparation, lasting finishes and expressive nail artistry.", supporting: "Care fundamentals · Creative design" },
     ],

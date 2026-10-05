@@ -214,8 +214,7 @@
 
   color: #ffffff;
 
-  font-family:
-    Georgia, "Times New Roman", serif;
+  font-family: var(--font-afacad), sans-serif;
 
   font-size: 9px;
 

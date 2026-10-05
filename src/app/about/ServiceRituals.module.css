@@ -17,10 +17,10 @@
 
 .intro h2 {
   margin: 0;
-  font-family: var(--font-cormorant-garamond), Georgia, serif;
-  font-size: clamp(52px, 5.4vw, 88px);
-  font-weight: 400;
-  line-height: .92;
+  font-family: var(--font-aboreto), serif;
+  font-size: clamp(42px, 4.7vw, 69px);
+  font-weight: 500;
+  line-height: 1;
   letter-spacing: -.045em;
 }
 
@@ -28,7 +28,7 @@
   max-width: 500px;
   margin: clamp(28px, 4vh, 44px) 0 0;
   color: #4c4d48;
-  font: 400 clamp(15px, 1.05vw, 18px)/1.7 Arial, sans-serif;
+  font: 400 clamp(15px, 1.05vw, 18px)/1.7 var(--font-afacad), sans-serif;
 }
 
 .serviceList {
@@ -70,11 +70,11 @@
 }
 
 .number {
-  font: 500 15px/1 var(--font-cormorant-garamond), Georgia, serif;
+  font: 500 15px/1 var(--font-aboreto), serif;
 }
 
 .title {
-  font: 600 clamp(17px, 1.35vw, 23px)/1.1 Arial, sans-serif;
+  font: 600 clamp(17px, 1.35vw, 23px)/1.1 var(--font-afacad), sans-serif;
   letter-spacing: .06em;
   text-transform: uppercase;
 }

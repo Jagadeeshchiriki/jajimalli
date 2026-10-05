@@ -1,5 +1,6 @@
 .brand { display: block; width: clamp(125px, 12vw, 190px); line-height: 0; }
 .brand svg { display: block; width: 100%; height: auto; overflow: visible; }
+.brand text { font-family: Arial, Helvetica, sans-serif; }
 
 @media (max-width: 800px) {
   .brand { width: 120px; }

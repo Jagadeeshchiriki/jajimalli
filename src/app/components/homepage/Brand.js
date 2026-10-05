@@ -1,12 +1,6 @@
 import Link from "next/link";
-import { Inter } from "next/font/google";
 import logo from "../../images/header/logo2.png";
 import styles from "./Brand.module.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: "700",
-});
 
 export default function Brand() {
   return (
@@ -21,7 +15,6 @@ export default function Brand() {
 
         <image href={logo.src} x="100" y="130" width="400" height="135" />
         <text
-          className={inter.className}
           x="120"
           y="302"
           fill="#171713"

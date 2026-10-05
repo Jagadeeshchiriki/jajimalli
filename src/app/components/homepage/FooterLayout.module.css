@@ -53,7 +53,7 @@
 
 .location h3 {
   margin: 22px 0 27px;
-  font: 500 clamp(23px, 1.65vw, 34px)/1 Arial, sans-serif;
+  font: 500 clamp(23px, 1.65vw, 34px)/1 var(--font-aboreto), serif;
   letter-spacing: .08em;
 }
 

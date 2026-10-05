@@ -130,7 +130,7 @@
   border-radius: 50%;
   background: #f5f0e4;
   color: #31584e;
-  font: 600 clamp(9px, .65vw, 12px)/1 Arial, sans-serif;
+  font: 600 clamp(9px, .65vw, 12px)/1 var(--font-afacad), sans-serif;
   letter-spacing: .08em;
   box-shadow: 0 0 0 0 rgba(245, 240, 228, .5);
   animation: markerBackground 3.2s ease-in-out infinite;
@@ -186,24 +186,24 @@
 
 .serviceLabel {
   margin-bottom: 8px;
-  font: 600 9px/1 Arial, sans-serif;
+  font: 600 9px/1 var(--font-afacad), sans-serif;
   letter-spacing: .18em;
   text-transform: uppercase;
 }
 
 .serviceTitle {
-  font: 400 clamp(22px, 1.8vw, 31px)/1 Georgia, "Times New Roman", serif;
+  font: 400 clamp(22px, 1.8vw, 31px)/1 var(--font-aboreto), serif;
   letter-spacing: -.025em;
 }
 
 .serviceDescription {
   margin-top: 11px;
-  font: 400 clamp(10px, .72vw, 13px)/1.45 Arial, sans-serif;
+  font: 400 clamp(10px, .72vw, 13px)/1.45 var(--font-afacad), sans-serif;
 }
 
 .serviceCta {
   margin-top: 15px;
-  font: 600 10px/1 Arial, sans-serif;
+  font: 600 10px/1 var(--font-afacad), sans-serif;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
@@ -329,7 +329,7 @@
   }
 
   .serviceTitle {
-    font: 500 15px/1.2 Arial, sans-serif;
+    font: 500 15px/1.2 var(--font-afacad), sans-serif;
     letter-spacing: .08em;
     text-transform: uppercase;
   }

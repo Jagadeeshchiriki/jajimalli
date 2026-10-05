@@ -1,12 +1,18 @@
 import "./globals.css";
 import "lenis/dist/lenis.css";
-import { Cormorant_Garamond } from "next/font/google";
+import { Aboreto, Afacad } from "next/font/google";
 import SmoothScroll from "./components/SmoothScroll";
 
-const cormorantGaramond = Cormorant_Garamond({
+const aboreto = Aboreto({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-cormorant-garamond",
+  weight: "400",
+  variable: "--font-aboreto",
+});
+
+const afacad = Afacad({
+  subsets: ["latin"],
+  weight: "variable",
+  variable: "--font-afacad",
 });
 
 export const metadata = {
@@ -20,7 +26,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={cormorantGaramond.variable}>
+      <body className={`${aboreto.variable} ${afacad.variable}`}>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

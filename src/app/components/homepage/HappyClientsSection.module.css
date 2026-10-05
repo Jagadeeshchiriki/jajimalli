@@ -54,16 +54,16 @@
 .titleBlock > span {
   display: block;
   margin-bottom: 13px;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-afacad), sans-serif;
   font-size: clamp(19px, 1.65vw, 28px);
   font-style: italic;
   color: var(--ink);
 }
 
 .titleBlock h2 {
-  font-family: var(--font-cormorant-garamond), Georgia, serif;
+  font-family: var(--font-aboreto), serif;
   font-size: clamp(48px, 5.4vw, 78px);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: -0.035em;
   color: var(--ink);
@@ -101,7 +101,7 @@
 .firstStatement p,
 .finalStatement p {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-afacad), sans-serif;
   font-size: clamp(28px, 3vw, 48px);
   font-weight: 500;
   line-height: 1.08;

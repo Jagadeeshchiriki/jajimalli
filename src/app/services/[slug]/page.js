@@ -1,13 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { DM_Serif_Display } from "next/font/google";
 import { notFound } from "next/navigation";
 import { getService, services } from "../serviceData";
 import ServiceDetailScrollStart from "./ServiceDetailScrollStart";
 import ServiceShowcase from "./ServiceShowcase";
 import styles from "./ServiceDetail.module.css";
-
-const displayFont = DM_Serif_Display({ subsets: ["latin"], weight: "400" });
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -35,7 +32,7 @@ export default async function ServiceDetailPage({ params }) {
         <Image src={service.image} alt={`${service.shortTitle} at Jajimalli`} fill priority sizes="100vw" />
         <div className={styles.heroShade} />
         <div className={styles.heroCopy}>
-          <h1 className={displayFont.className}>{service.shortTitle}</h1>
+          <h1>{service.shortTitle}</h1>
           <span>{service.description}</span>
         </div>
       </section>

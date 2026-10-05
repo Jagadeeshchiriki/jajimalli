@@ -1,15 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { DM_Serif_Display } from "next/font/google";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./Hero360.module.css";
-
-const dmSerifDisplay = DM_Serif_Display({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -840,7 +834,7 @@ export default function Hero360() {
 
         <h1
           ref={titleRef}
-          className={`${styles.title} ${dmSerifDisplay.className}`}
+          className={styles.title}
           style={{
             perspective: "900px",
           }}

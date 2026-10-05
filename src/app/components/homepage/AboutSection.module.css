@@ -86,17 +86,17 @@
 
 .copy h2 {
   color: #171713;
-  font-family: "Bodoni Moda", serif;
+  font-family: var(--font-aboreto), serif;
   font-style: normal;
   font-size: clamp(42px, 4.7vw, 69px);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 1.2px;
 }
 
 .copy p {
   margin: 30px auto 25px;
   color: #31342f;
-  font: 24px/1.9 "Bodoni Moda", serif;
+  font: 400 24px/1.9 var(--font-afacad), sans-serif;
 }
 
 .copy a {
@@ -104,7 +104,7 @@
   background: var(--green);
   color: white;
   padding: 13px 36px;
-  font: 18px  var(--font-dm-sans);
+  font: 18px var(--font-afacad), sans-serif;
   border-radius: 8px;
   margin-top: 15px;
 }
