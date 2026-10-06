@@ -103,7 +103,7 @@
   margin: 0;
   font-family: var(--font-afacad), sans-serif;
   font-size: clamp(28px, 3vw, 48px);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.035em;
   color: var(--ink);

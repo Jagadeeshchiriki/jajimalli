@@ -278,9 +278,9 @@ export default function HappyClientsSection() {
         </div>
 
         <div ref={titleRef} className={styles.titleBlock}>
-          <span>Celebrating our</span>
+          {/* <span>Celebrating our</span> */}
           <h2 id="happy-clients-title">Happy Clients</h2>
-          <p>Real moments. Beautiful transformations.</p>
+          {/* <p>Real moments. Beautiful transformations.</p> */}
         </div>
 
       </div>
