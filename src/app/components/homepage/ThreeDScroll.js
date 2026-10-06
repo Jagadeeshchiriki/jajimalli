@@ -151,7 +151,10 @@ export default function ThreeDScroll() {
     <section ref={sectionRef} className={styles.section} aria-labelledby="three-d-scroll-title">
       <div className={styles.intro}>
         {/* <span>Our Services</span> */}
-        <h2 id="three-d-scroll-title">Care in every dimension.</h2>
+        <h2 id="three-d-scroll-title">
+          <span className={styles.headingLine}>Care in every</span>
+          <span className={styles.headingLine}>dimension</span>
+        </h2>
       </div>
 
       <div ref={sceneRef} className={styles.scene}>
