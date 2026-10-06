@@ -9,7 +9,7 @@ export const metadata = { title: "Services" };
 export default function ServicesPage() {
   return (
     <main className={styles.page}>
-      <section className={styles.hero}>
+      <section className={styles.hero} data-menu-icon-tone="dark">
         <Image className={styles.heroImage} src={introImage} alt="Spa essentials arranged for a calming treatment" fill priority sizes="100vw" />
         <div className={styles.heroShade} />
         <div className={styles.heroCopy}>

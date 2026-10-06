@@ -49,7 +49,7 @@ export default function AboutIntro() {
     const context = gsap.context(() => {
       gsap.set(secondHero, { clipPath: "inset(100% 0 0 0)", scale: 1.07 });
       gsap.set(firstHero, { scale: 1 });
-      gsap.set(backdrop, { backdropFilter: "blur(0px)", WebkitBackdropFilter: "blur(0px)" });
+      gsap.set(backdrop, { backdropFilter: "blur(0px)" });
       gsap.set(storyCopy, { autoAlpha: 0 });
       gsap.set(storyTexts[0], { autoAlpha: 1, y: 0 });
       gsap.set(storyTexts[1], { autoAlpha: 0, y: 32 });
@@ -105,7 +105,6 @@ export default function AboutIntro() {
         .to(firstHero, { scale: 1.045, duration: 1.15, ease: "none" }, 0)
         .to(backdrop, {
           backdropFilter: "blur(18px)",
-          WebkitBackdropFilter: "blur(18px)",
           backgroundColor: "rgba(8, 15, 11, .3)",
           duration: 0.72,
           ease: "power1.inOut",
@@ -142,7 +141,6 @@ export default function AboutIntro() {
 
       timeline.to(backdrop, {
           backdropFilter: "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
           backgroundColor: "rgba(8, 15, 11, .48)",
           duration: 0.6,
         }, 5.1);
@@ -176,7 +174,7 @@ export default function AboutIntro() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.section} aria-labelledby="about-intro-title">
+    <section ref={sectionRef} className={styles.section} aria-labelledby="about-intro-title" data-menu-icon-tone="dark">
       <div className={styles.stage}>
         <div className={`${styles.heroMedia} ${styles.firstHero}`} data-about-first-hero>
           <Image

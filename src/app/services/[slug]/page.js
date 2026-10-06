@@ -28,7 +28,7 @@ export default async function ServiceDetailPage({ params }) {
   return (
     <main className={styles.page}>
       <ServiceDetailScrollStart routeKey={slug} />
-      <section className={styles.hero}>
+      <section className={styles.hero} data-menu-icon-tone="dark">
         <Image src={service.image} alt={`${service.shortTitle} at Jajimalli`} fill priority sizes="100vw" />
         <div className={styles.heroShade} />
         <div className={styles.heroCopy}>

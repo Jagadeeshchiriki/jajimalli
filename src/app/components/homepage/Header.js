@@ -19,7 +19,9 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isHeaderHidden, setIsHeaderHidden] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isMenuIconDark, setIsMenuIconDark] = useState(false);
   const restoredPositionRef = useRef(null);
+  const menuTriggerRef = useRef(null);
   const lenis = useLenis();
 
   useEffect(() => {
@@ -78,6 +80,70 @@ export default function Header() {
   }, [isOpen]);
 
   useEffect(() => {
+    const menuTrigger = menuTriggerRef.current;
+
+    if (!menuTrigger) return;
+
+    let animationFrame = null;
+
+    const getSurfaceColor = (element) => {
+      let current = element;
+
+      while (current && current !== document.body) {
+        const match = window.getComputedStyle(current).backgroundColor.match(/[\d.]+/g);
+
+        if (match && Number(match[3] ?? 1) > 0) {
+          return match.map(Number);
+        }
+
+        current = current.parentElement;
+      }
+
+      return [245, 240, 228, 1];
+    };
+
+    const updateMenuIconColor = () => {
+      const { left, top, width, height } = menuTrigger.getBoundingClientRect();
+      const header = menuTrigger.closest("header");
+      const elements = document.elementsFromPoint(left + width / 2, top + height / 2)
+        .filter((element) => !header?.contains(element));
+      const themedSection = elements
+        .map((element) => element.closest("[data-menu-icon-tone]"))
+        .find(Boolean);
+
+      if (themedSection) {
+        setIsMenuIconDark(themedSection.dataset.menuIconTone === "light");
+      } else {
+        const [red, green, blue] = getSurfaceColor(elements[0] ?? document.body);
+        const luminance = (0.2126 * red + 0.7152 * green + 0.0722 * blue) / 255;
+        setIsMenuIconDark(luminance > 0.6);
+      }
+
+      animationFrame = null;
+    };
+
+    const scheduleUpdate = () => {
+      if (animationFrame === null) {
+        animationFrame = requestAnimationFrame(updateMenuIconColor);
+      }
+    };
+
+    const observer = new IntersectionObserver(scheduleUpdate, { threshold: [0, 0.5, 1] });
+    document.querySelectorAll("main section, main footer").forEach((section) => observer.observe(section));
+
+    scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (animationFrame !== null) cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
+  useEffect(() => {
     let previousScrollY = window.scrollY;
     let animationFrame = null;
 
@@ -132,7 +198,8 @@ export default function Header() {
           <Brand />
         </div>
         <button
-          className={styles.menuTrigger}
+          className={`${styles.menuTrigger}${isMenuIconDark ? ` ${styles.menuTriggerDark}` : ""}`}
+          ref={menuTriggerRef}
           type="button"
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}

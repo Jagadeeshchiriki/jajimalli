@@ -36,7 +36,7 @@ const services = [
 
 export default function HeroSection() {
   return (
-    <section className={styles.section} aria-label="Featured services">
+    <section className={styles.section} aria-label="Featured services" data-menu-icon-tone="dark">
       <div className={styles.background}>
         <Image src={heroBackground} alt="" fill sizes="100vw" />
       </div>
