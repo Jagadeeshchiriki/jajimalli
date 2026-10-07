@@ -79,11 +79,11 @@
 
 .caption strong {
   color: var(--ink);
-  font: 550 clamp(18px, 1.35vw, 22px)/1.2 var(--font-aboreto), serif;
+  font: 600 clamp(18px, 1.35vw, 28px)/1.2 var(--font-aboreto), serif;
 }
 
 .caption span {
-  font: 550 18px/1.2 var(--font-aboreto), serif;
+  font: 600 18px/1.2 var(--font-aboreto), serif;
    color: var(--ink);
 }
 
