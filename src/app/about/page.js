@@ -1,5 +1,6 @@
 import Header from "../components/homepage/Header";
 import AboutIntro from "./AboutIntro";
+import FounderSection from "./FounderSection";
 import OurStory from "./OurStory";
 import ServiceRituals from "./ServiceRituals";
 import AboutLocations from "./AboutLocations";
@@ -12,6 +13,7 @@ export default function AboutPage() {
     <main>
       <Header />
       <AboutIntro />
+      <FounderSection />
       <OurStory />
       <ServiceRituals />
       <AboutLocations />

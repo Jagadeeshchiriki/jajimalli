@@ -10,7 +10,7 @@
   font-family: var(--font-aboreto), serif;
   font-size: clamp(42px, 4.7vw, 69px);
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 1.2;
   pointer-events: none;
 }
 

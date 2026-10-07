@@ -18,6 +18,10 @@ import chemicalPeel from "../images/servicepage/chemical.png";
 import academyHair from "../images/servicepage/hairstyle.png";
 import academyNails from "../images/servicepage/nailart1.png";
 import professionalMakeup from "../images/servicepage/professionalmakeup1.png";
+import prp from "../images/servicepage/prp-treatment.png";
+import gfc from "../images/servicepage/gfc.png";
+import dpn from "../images/servicepage/dpn.png";
+
 
 export const services = [
   {
@@ -30,7 +34,6 @@ export const services = [
     image: spaSalon,
     offerings: [
       { title: "Microblading", image: microblading, description: "Precision brow artistry shaped to complement your natural features.", supporting: "Tailored mapping · Natural-looking definition" },
-      { title: "Hydra Facial", image: hydraFacial, description: "A deeply cleansing and hydrating ritual for fresh, luminous skin.", supporting: "Cleanse · Exfoliate · Hydrate" },
       { title: "Bridal Makeup", image: bridalMakeup, description: "Refined bridal artistry designed around your features, attire and celebration.", supporting: "Personal consultation · Long-wear finish" },
       { title: "Lip Blush", image: lipBlush, description: "Soft, balanced lip colour that enhances shape while retaining a natural finish.", supporting: "Custom tone · Delicate definition" },
       { title: "Lice Treatment", image: liceTreatment, description: "Careful scalp and hair treatment delivered with comfort and discretion.", supporting: "Thorough care · Gentle process" },
@@ -54,7 +57,11 @@ export const services = [
     offerings: [
       { title: "Laser Hair Removal", image: skinLaser, description: "Technology-led hair reduction planned around your skin and treatment goals.", supporting: "Personal plan · Expert-led sessions" },
       { title: "Electrolysis Hair Removal", image: electrolysis, description: "Targeted permanent hair removal for precise, individual treatment areas.", supporting: "Fine precision · All skin tones" },
+      { title: "Hydra Facial", image: hydraFacial, description: "A deeply cleansing and hydrating ritual for fresh, luminous skin.", supporting: "Cleanse · Exfoliate · Hydrate" },
       { title: "Chemical Peel", image: chemicalPeel, description: "A professional resurfacing treatment selected to renew clarity and texture.", supporting: "Skin assessment · Controlled renewal" },
+      {title: "PRP Treatment", image: prp, description: "A regenerative treatment using platelet-rich plasma to support healthier, fuller-looking hair and skin.",supporting: "Regenerative care · Expert-led treatment" },
+      {title: "GFC Treatment", image: gfc, description: "A growth-factor treatment designed to support hair regeneration and improve overall scalp health.",supporting: "Growth factors · Scalp rejuvenation"},
+      {title: "DPN Treatment", image: dpn, description: "A precise skin treatment designed to safely reduce and remove small benign skin growths and spots.",supporting: "Precise treatment · Professional care" },
     ],
   },
   {

@@ -9,6 +9,7 @@ import salonWide from "../images/aboutpage/introsection/interior1.jpg";
 import stylingFloor from "../images/aboutpage/introsection/interiro2.jpg";
 import treatmentRoom from "../images/aboutpage/introsection/interiro3.jpg";
 import salonLounge from "../images/aboutpage/introsection/interiro4.jpg";
+import spaCourtyard from "../images/aboutpage/introsection/spaCourtyard1.png";
 import interiorHero from "../images/aboutpage/interior4.png";
 import styles from "./AboutIntro.module.css";
 
@@ -35,8 +36,9 @@ export default function AboutIntro() {
 
     const firstHero = section.querySelector("[data-about-first-hero]");
     const secondHero = section.querySelector("[data-about-second-hero]");
+    const thirdHero = section.querySelector("[data-about-third-hero]");
     const backdrop = section.querySelector("[data-about-backdrop]");
-    const heroCopy = section.querySelector("[data-about-hero-copy]");
+    const heroCopies = gsap.utils.toArray("[data-about-hero-copy]", section);
     const storyCopy = section.querySelector("[data-about-story-copy]");
     const storyTexts = gsap.utils.toArray("[data-about-story-text]", section);
     const pairs = gsap.utils.toArray("[data-about-card-pair]", section);
@@ -47,8 +49,10 @@ export default function AboutIntro() {
     let settleStoryText;
 
     const context = gsap.context(() => {
-      gsap.set(secondHero, { clipPath: "inset(100% 0 0 0)", scale: 1.07 });
+      gsap.set([secondHero, thirdHero], { clipPath: "inset(100% 0 0 0)", scale: 1.07 });
       gsap.set(firstHero, { scale: 1 });
+      gsap.set(heroCopies[0], { autoAlpha: 1, y: 0 });
+      gsap.set(heroCopies.slice(1), { autoAlpha: 0, y: 32 });
       gsap.set(backdrop, { backdropFilter: "blur(0px)" });
       gsap.set(storyCopy, { autoAlpha: 0 });
       gsap.set(storyTexts[0], { autoAlpha: 1, y: 0 });
@@ -64,8 +68,8 @@ export default function AboutIntro() {
         });
       });
 
-      const storyTextStart = 3.28;
-      const storyTextEnd = 3.9;
+      const storyTextStart = 4.43;
+      const storyTextEnd = 5.05;
       const storyTextTimeline = gsap.timeline({ paused: true })
         .to(storyTexts[0], { autoAlpha: 0, y: -30, duration: 0.38, ease: "power2.in" }, 0)
         .to(storyTexts[1], { autoAlpha: 1, y: 0, duration: 0.48, ease: "power2.out" }, 0.14);
@@ -103,24 +107,35 @@ export default function AboutIntro() {
           ease: "power2.inOut",
         }, 0)
         .to(firstHero, { scale: 1.045, duration: 1.15, ease: "none" }, 0)
+        .to(heroCopies[0], { autoAlpha: 0, y: -30, duration: 0.38, ease: "power2.in" }, 0.28)
+        .to(heroCopies[1], { autoAlpha: 1, y: 0, duration: 0.48, ease: "power2.out" }, 0.48)
+        .to(thirdHero, {
+          clipPath: "inset(0% 0 0 0)",
+          scale: 1,
+          duration: 1.15,
+          ease: "power2.inOut",
+        }, 1.15)
+        .to(secondHero, { scale: 1.045, duration: 1.15, ease: "none" }, 1.15)
+        .to(heroCopies[1], { autoAlpha: 0, y: -30, duration: 0.38, ease: "power2.in" }, 1.43)
+        .to(heroCopies[2], { autoAlpha: 1, y: 0, duration: 0.48, ease: "power2.out" }, 1.63)
         .to(backdrop, {
           backdropFilter: "blur(18px)",
           backgroundColor: "rgba(8, 15, 11, .3)",
           duration: 0.72,
           ease: "power1.inOut",
-        }, 1.08)
-        .to(heroCopy, {
+        }, 2.23)
+        .to(heroCopies[2], {
           autoAlpha: 0,
           y: -52,
           scale: 0.96,
           duration: 0.62,
           ease: "power2.in",
-        }, 1.12)
-        .to(storyCopy, { autoAlpha: 1, duration: 0.52, ease: "power2.out" }, 1.62);
+        }, 2.27)
+        .to(storyCopy, { autoAlpha: 1, duration: 0.52, ease: "power2.out" }, 2.77);
 
       pairs.forEach((pair, pairIndex) => {
         const cards = pair.querySelectorAll("[data-about-card]");
-        const start = pairIndex === 0 ? 1.72 : 3.62;
+        const start = pairIndex === 0 ? 2.87 : 4.77;
 
         timeline.to(cards, {
           x: 0,
@@ -143,7 +158,7 @@ export default function AboutIntro() {
           backdropFilter: "blur(24px)",
           backgroundColor: "rgba(8, 15, 11, .48)",
           duration: 0.6,
-        }, 5.1);
+        }, 6.25);
 
       settleStoryText = () => {
         const trigger = timeline.scrollTrigger;
@@ -188,6 +203,16 @@ export default function AboutIntro() {
 
         <div className={`${styles.heroMedia} ${styles.secondHero}`} data-about-second-hero>
           <Image
+            src={spaCourtyard}
+            alt="Jajimalli spa courtyard surrounded by greenery"
+            fill
+            priority
+            sizes="100vw"
+          />
+        </div>
+
+        <div className={`${styles.heroMedia} ${styles.thirdHero}`} data-about-third-hero>
+          <Image
             src={interiorHero}
             alt="The warm and welcoming Jajimalli salon interior"
             fill
@@ -201,7 +226,14 @@ export default function AboutIntro() {
 
         <div className={styles.heroCopy} data-about-hero-copy>
           <h1 id="about-intro-title">Beauty, With<br />A Sense of Place</h1>
-          {/* <p>A thoughtful destination for beauty, wellness and the quiet confidence that follows exceptional care.</p> */}
+        </div>
+
+        <div className={`${styles.heroCopy} ${styles.heroCopyWide} ${styles.heroCopyHidden}`} data-about-hero-copy>
+          <h1>A Space, Designed<br />To Help You Unwind</h1>
+        </div>
+
+        <div className={`${styles.heroCopy} ${styles.heroCopyWide} ${styles.heroCopyHidden}`} data-about-hero-copy>
+          <h1>Where Expert Artistry<br />Meets Personal Care</h1>
         </div>
 
         {imagePairs.map((pair, pairIndex) => (

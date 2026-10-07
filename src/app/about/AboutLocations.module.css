@@ -18,15 +18,8 @@
   font-family: var(--font-aboreto), serif;
   font-size: clamp(42px, 4.7vw, 69px);
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.2;
   letter-spacing: -.05em;
-  text-wrap: balance;
-}
-
-.header p {
-  margin: clamp(24px, 3.5vh, 38px) auto 0;
-  color: #50514c;
-  font: 400 clamp(15px, 1.15vw, 19px)/1.65 var(--font-afacad), sans-serif;
   text-wrap: balance;
 }
 
@@ -90,7 +83,7 @@
   padding: 16px 20px;
   background: #f7f3eb;
   color: #1d211d;
-  font: 600 9px/1 var(--font-afacad), sans-serif;
+  font: 600 18px/1 var(--font-afacad), sans-serif;
   letter-spacing: .16em;
   text-transform: uppercase;
   transition: background .3s ease, color .3s ease;

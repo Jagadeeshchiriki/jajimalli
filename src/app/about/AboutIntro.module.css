@@ -32,12 +32,18 @@
   object-position: center center;
 }
 
-.secondHero {
+.secondHero,
+.thirdHero {
   z-index: 1;
   clip-path: inset(100% 0 0 0);
 }
 
-.secondHero img {
+.thirdHero {
+  z-index: 2;
+}
+
+.secondHero img,
+.thirdHero img {
   object-position: center center;
 }
 
@@ -96,13 +102,19 @@
   text-transform: uppercase;
 }
 
-.heroCopy p {
-  width: min(680px, 90%);
-  margin: clamp(28px, 4vh, 48px) auto 0;
-  color: #fff;
-  font: 500 clamp(17px, 1.4vw, 23px)/1.5 var(--font-afacad), sans-serif;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, .82);
-  text-wrap: balance;
+.heroCopyHidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.heroCopyWide {
+  width: min(1200px, calc(100% - 48px));
+}
+
+.heroCopyWide h1 {
+  font-size: clamp(36px, 4vw, 72px);
+  white-space: nowrap;
+  line-height: 1.2;
 }
 
 .storyCopy {
@@ -234,6 +246,7 @@
 
   .firstHero img { object-position: 58% center; }
   .secondHero img { object-position: 54% center; }
+  .thirdHero img { object-position: center center; }
 
   .heroCopy,
   .storyCopy {
@@ -245,9 +258,13 @@
     line-height: .84;
   }
 
-  .heroCopy p {
-    width: min(420px, 94%);
-    font-size: 16px;
+  .heroCopyWide {
+    width: calc(100% - 24px);
+  }
+
+  .heroCopyWide h1 {
+    font-size: clamp(23px, 6.5vw, 52px);
+    line-height: 1;
   }
 
   .storyText h2 {
@@ -289,6 +306,7 @@
   }
 
   .secondHero,
+  .thirdHero,
   .backdrop,
   .scrollCue {
     display: none;

@@ -1,7 +1,7 @@
 .section {
   position: relative;
   z-index: 2;
-  margin-top: -100svh;
+  margin-top: 0;
   overflow: hidden;
   background: var(--cream);
   color: var(--ink);
@@ -14,15 +14,19 @@
 }
 
 .imageColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 100svh;
   padding: clamp(28px, 4vw, 72px) 0 clamp(28px, 4vw, 72px) clamp(28px, 4vw, 72px);
 }
 
 .imageReveal {
   position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: calc(100svh - clamp(56px, 8vw, 144px));
+  width: 88%;
+  height: 76svh;
+  min-height: 520px;
+  max-height: 760px;
   overflow: hidden;
   clip-path: inset(0 100% 0 0);
   will-change: clip-path;
@@ -43,12 +47,11 @@
 .copy h2 {
   margin: 0;
   font-family: var(--font-aboreto), serif;
-  font-size: clamp(42px, 4.7vw, 49px);
+  font-size: clamp(42px, 4.7vw, 69px);
   font-weight: 500;
-  line-height: 1.21;
+  line-height: 1.2;
   letter-spacing: -.045em;
   text-wrap: balance;
-  text-transform: capitalize;
 }
 
 .body {
@@ -59,7 +62,7 @@
 .body p {
   margin: 0;
   color: #464842;
-  font: 400 clamp(15px, 1.1vw, 18px)/1.75 var(--font-afacad), sans-serif;
+  font: 400 clamp(17px, 1.25vw, 21px)/1.75 var(--font-afacad), sans-serif;
 }
 
 .body p + p {
@@ -73,12 +76,15 @@
   }
 
   .imageColumn {
-    min-height: 70svh;
+    min-height: 64svh;
     padding: 20px 20px 0;
   }
 
   .imageReveal {
-    min-height: 70svh;
+    width: 90%;
+    height: 58svh;
+    min-height: 420px;
+    max-height: 600px;
   }
 
   .copy {

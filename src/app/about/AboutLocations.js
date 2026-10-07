@@ -60,8 +60,7 @@ export default function AboutLocations() {
   return (
     <section ref={sectionRef} className={styles.section} aria-labelledby="about-locations-title">
       <header className={styles.header}>
-        <h2 id="about-locations-title">Two Locations, The Same Care</h2>
-        <p>Visit us at our two beautiful locations in Visakhapatnam and Tanuku.</p>
+        <h2 id="about-locations-title">Two Locations The Same Care</h2>
       </header>
 
       <div className={styles.locations}>

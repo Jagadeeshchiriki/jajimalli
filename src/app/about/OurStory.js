@@ -60,7 +60,7 @@ export default function OurStory() {
         </div>
 
         <div className={styles.copy}>
-          <h2 id="our-story-title">Rooted in care.<br />Refined through experience.</h2>
+          <h2 id="our-story-title">Rooted in care<br />Refined through experience</h2>
           <div className={styles.body}>
             <p>Jajimalli began with a simple belief: beauty feels most meaningful when it is personal. Every space, service and detail has been shaped to help you slow down, feel understood and leave with renewed confidence.</p>
             <p>From restorative spa rituals and thoughtful salon artistry to advanced skin care and professional education, our approach brings expertise and warmth together under one roof.</p>

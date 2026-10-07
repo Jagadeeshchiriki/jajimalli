@@ -3,7 +3,7 @@
 .textStage { position: relative; height: min(620px, 68vh); }
 .copy { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; will-change: transform, opacity, filter; }
 .copy h2 { max-width: 680px; margin: 0; color: #171713; font-family: var(--font-aboreto), serif; font-size: clamp(54px, 5.8vw, 89px); font-weight: 500; line-height: .88; letter-spacing: -.045em; }
-.copy p { max-width: 540px; margin: clamp(28px, 4vh, 46px) 0 0; font: 400 clamp(16px, 1.15vw, 20px)/1.7 var(--font-afacad), sans-serif; }
+.copy p { max-width: 540px; margin: clamp(28px, 4vh, 46px) 0 0; font: 400 clamp(24px, 1.15vw, 24px)/1.7 var(--font-afacad), sans-serif; }
 .visualStage { position: relative; width: 100%; height: min(78vh, 800px); overflow: hidden; border-radius: clamp(8px, 1.2vw, 20px); perspective: 1400px; transform-style: preserve-3d; }
 .card { position: absolute; inset: 0; margin: 0; overflow: hidden; border-radius: clamp(8px, 1.2vw, 20px); background: #d8d0c0; will-change: transform, opacity, filter; transform-style: preserve-3d; }
 .card::after { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 68%, rgba(11,22,18,.12)); content: ""; pointer-events: none; }

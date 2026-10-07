@@ -72,13 +72,32 @@ function ClientCarousel3D({ progress }) {
         transparent: true,
         toneMapped: false,
       });
+      const grayscaleUniform = { value: 1 };
+      material.userData.grayscaleUniform = grayscaleUniform;
+      material.onBeforeCompile = (shader) => {
+        shader.uniforms.uGrayscale = grayscaleUniform;
+        shader.fragmentShader = shader.fragmentShader
+          .replace(
+            "#include <map_fragment>",
+            `#include <map_fragment>
+            float grayscale = dot(diffuseColor.rgb, vec3(0.299, 0.587, 0.114));
+            diffuseColor.rgb = mix(diffuseColor.rgb, vec3(grayscale), uGrayscale);`,
+          )
+          .replace(
+            "uniform vec3 diffuse;",
+            "uniform vec3 diffuse;\nuniform float uGrayscale;",
+          );
+      };
       mesh = new THREE.Mesh(new THREE.PlaneGeometry(1.55, 1.85, 20, 1), material);
       mesh.userData.index = index;
+      mesh.userData.grayscale = 1;
       carousel.add(mesh);
       return mesh;
     });
 
     const pointer = new THREE.Vector2();
+    const raycaster = new THREE.Raycaster();
+    let pointerActive = false;
     let animationFrame = 0;
     let disposed = false;
     let lastFrameTime = performance.now();
@@ -158,6 +177,11 @@ function ClientCarousel3D({ progress }) {
       const bounds = mount.getBoundingClientRect();
       pointer.x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
       pointer.y = -((event.clientY - bounds.top) / bounds.height) * 2 + 1;
+      pointerActive = true;
+    };
+
+    const handlePointerLeave = () => {
+      pointerActive = false;
     };
 
     const render = (frameTime = performance.now()) => {
@@ -199,6 +223,21 @@ function ClientCarousel3D({ progress }) {
 
       const targetScale = 0.98 + progress.current * 0.02;
       carousel.scale.setScalar(THREE.MathUtils.lerp(carousel.scale.x, targetScale, easing));
+
+      scene.updateMatrixWorld();
+      raycaster.setFromCamera(pointer, camera);
+      const hoveredCard = pointerActive ? raycaster.intersectObjects(cards, false)[0]?.object : null;
+
+      cards.forEach((card) => {
+        const targetGrayscale = card === hoveredCard ? 0 : 1;
+        card.userData.grayscale = THREE.MathUtils.lerp(
+          card.userData.grayscale,
+          targetGrayscale,
+          easing,
+        );
+        card.material.userData.grayscaleUniform.value = card.userData.grayscale;
+      });
+
       renderer.render(scene, camera);
       animationFrame = window.requestAnimationFrame(render);
     };
@@ -206,6 +245,7 @@ function ClientCarousel3D({ progress }) {
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(mount);
     mount.addEventListener("pointermove", handlePointerMove, { passive: true });
+    mount.addEventListener("pointerleave", handlePointerLeave);
     resize();
     render();
 
@@ -214,6 +254,7 @@ function ClientCarousel3D({ progress }) {
       window.cancelAnimationFrame(animationFrame);
       resizeObserver.disconnect();
       mount.removeEventListener("pointermove", handlePointerMove);
+      mount.removeEventListener("pointerleave", handlePointerLeave);
 
       cards.forEach((card) => {
         card.geometry.dispose();

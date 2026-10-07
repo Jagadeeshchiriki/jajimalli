@@ -1,11 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useLenis } from "lenis/react";
-import Brand from "./Brand";
+// import Brand from "./Brand";
 import PageLoader from "./PageLoader";
 import styles from "./Header.module.css";
+import logo from "../../images/header/jajimallilogo2.png";
 
 const links = [
   { href: "/", label: "Home" },
@@ -73,11 +75,6 @@ export default function Header() {
       window.removeEventListener("jajimalli:loader-ready-to-exit", restoreScrollPosition);
     };
   }, [lenis]);
-
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [isOpen]);
 
   useEffect(() => {
     const menuTrigger = menuTriggerRef.current;
@@ -195,7 +192,10 @@ export default function Header() {
 
       <header className={`${styles.header}${isHeaderHidden ? ` ${styles.headerHidden}` : ""}`}>
         <div className={styles.brandLockup}>
-          <Brand />
+          {/* <Brand /> */}
+          <Link href="/" aria-label="Jajimalli home">
+            <Image className={styles.brandLogo} src={logo} alt="Jajimalli" priority />
+          </Link>
         </div>
         <button
           className={`${styles.menuTrigger}${isMenuIconDark ? ` ${styles.menuTriggerDark}` : ""}`}

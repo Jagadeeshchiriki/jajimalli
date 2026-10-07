@@ -13,151 +13,167 @@ import styles from "./ServicesSection.module.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const services = [
-  { title: "Spa Salon", image: spaSalon, position: "center" },
-  { title: "Skin Lasers", image: skinLaser, position: "center" },
-  { title: "Academy", image: academy, position: "center" },
+  {
+    title: "Spa Salon",
+    href: "/services/spa-salon",
+    image: spaSalon,
+  },
+  {
+    title: "Skin Lasers",
+    href: "/services/skin-laser",
+    image: skinLaser,
+  },
+  {
+    title: "Beauty Academy",
+    href: "/services/beauty-academy",
+    image: academy,
+  },
 ];
-
-const carouselServices = [...services, ...services];
 
 export default function ServicesSection() {
   const sectionRef = useRef(null);
-  const carouselRef = useRef(null);
+  const sceneRef = useRef(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
-    const carouselElement = carouselRef.current;
+    const scene = sceneRef.current;
 
-    if (!section || !carouselElement) return;
+    if (!section || !scene) return;
 
-    const slides = Array.from(section.querySelectorAll("[data-service-slide]"));
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let sectionReveal = prefersReducedMotion ? 1 : 0;
-    let carousel;
-    let revealTrigger;
-    let disposed = false;
+    const cards = Array.from(scene.querySelectorAll("[data-three-d-card]"));
+    if (cards.length !== 3) return;
 
-    const updateSlidePositions = () => {
-      const carouselRect = carouselElement.getBoundingClientRect();
+    const createSlots = () => {
+      const width = section.clientWidth;
+      const height = window.innerHeight;
+      const mobile = width <= 700;
+      const horizontalDistance = mobile
+        ? width * 0.255
+        : Math.min(width * 0.28, 470);
+      const verticalDistance = height * (mobile ? 0.21 : 0.19);
 
-      slides.forEach((slide) => {
-        const slideRect = slide.getBoundingClientRect();
-        const motion = slide.querySelector("[data-service-motion]");
-        const media = slide.querySelector("[data-service-media]");
-        const image = slide.querySelector("[data-service-image]");
+      return {
+        top: {
+          x: 0,
+          y: -verticalDistance,
+          z: 110,
+          scale: 1,
+          rotationX: 0,
+          rotationY: 0,
+          rotationZ: 0,
+          filter: "brightness(1) saturate(1)",
+          boxShadow: "0 34px 90px rgba(24, 35, 30, 0.26)",
+        },
+        left: {
+          x: -horizontalDistance,
+          y: verticalDistance,
+          z: -90,
+          scale: mobile ? 0.9 : 0.93,
+          rotationX: 3,
+          rotationY: 8,
+          rotationZ: -2,
+          filter: "brightness(1) saturate(1)",
+          boxShadow: "0 18px 48px rgba(24, 35, 30, 0.16)",
+        },
+        right: {
+          x: horizontalDistance,
+          y: verticalDistance,
+          z: -90,
+          scale: mobile ? 0.9 : 0.93,
+          rotationX: 3,
+          rotationY: -8,
+          rotationZ: 2,
+          filter: "brightness(1) saturate(1)",
+          boxShadow: "0 18px 48px rgba(24, 35, 30, 0.16)",
+        },
+      };
+    };
 
-        if (!motion || !media || !image) return;
+    const slotProperties = (slotName) => ({
+      x: () => createSlots()[slotName].x,
+      y: () => createSlots()[slotName].y,
+      z: () => createSlots()[slotName].z,
+      scale: () => createSlots()[slotName].scale,
+      rotationX: () => createSlots()[slotName].rotationX,
+      rotationY: () => createSlots()[slotName].rotationY,
+      rotationZ: () => createSlots()[slotName].rotationZ,
+      filter: () => createSlots()[slotName].filter,
+      boxShadow: () => createSlots()[slotName].boxShadow,
+    });
 
-        const offsetLeft = slideRect.left + slideRect.width - carouselRect.left;
-        const progressLeft = offsetLeft / (carouselRect.width + slideRect.width);
-        const offsetCenter = slideRect.left
-          + slideRect.width / 2
-          - carouselRect.left
-          - carouselRect.width / 2;
-        const progressCenter = offsetCenter / (carouselRect.width + slideRect.width);
-        const imageMove = Math.min(49, Math.max(0, 49 * progressLeft));
-        const sideInset = 22 * (1 - sectionReveal);
+    const setInitialState = () => {
+      const slots = createSlots();
+      const initialSlots = [slots.top, slots.right, slots.left];
 
-        media.style.clipPath = `inset(0 ${sideInset}% 0 ${sideInset}%)`;
-
-        if (prefersReducedMotion) {
-          motion.style.transform = "none";
-          image.style.transform = "translateX(-24.5%)";
-          return;
-        }
-
-        image.style.transform = `translateX(-${imageMove}%)`;
-        motion.style.transform = `translateY(${60 * progressCenter}%) rotate(${6 * progressCenter}deg)`;
+      cards.forEach((card, index) => {
+        gsap.set(card, {
+          xPercent: -50,
+          yPercent: -50,
+          ...initialSlots[index],
+          force3D: true,
+        });
       });
     };
 
-    const initialiseCarousel = async () => {
-      const { default: Flickity } = await import("flickity");
+    setInitialState();
 
-      if (disposed) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return undefined;
+    }
 
-      carousel = new Flickity(carouselElement, {
-        accessibility: true,
-        cellAlign: "center",
-        cellSelector: "[data-service-slide]",
-        contain: false,
-        draggable: true,
-        dragThreshold: 1,
-        freeScroll: true,
-        freeScrollFriction: 0.05,
-        pageDots: false,
-        percentPosition: true,
-        prevNextButtons: false,
-        resize: true,
-        selectedAttraction: 0.01,
-        wrapAround: true,
+    const context = gsap.context(() => {
+      const timeline = gsap.timeline({
+        defaults: { duration: 1, ease: "power2.inOut" },
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "+=2400",
+          pin: true,
+          scrub: 1.2,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
       });
 
-      carousel.on("scroll", updateSlidePositions);
-      carousel.on("dragMove", updateSlidePositions);
-      carousel.on("settle", updateSlidePositions);
+      timeline
+        .to(cards[0], slotProperties("left"), 0)
+        .to(cards[1], slotProperties("top"), 0)
+        .to(cards[2], slotProperties("right"), 0)
+        .to(cards[0], slotProperties("right"), 1)
+        .to(cards[1], slotProperties("left"), 1)
+        .to(cards[2], slotProperties("top"), 1);
+    }, section);
 
-      revealTrigger = prefersReducedMotion
-        ? null
-        : ScrollTrigger.create({
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-            onUpdate: ({ progress }) => {
-              sectionReveal = progress < 0.35
-                ? progress / 0.35
-                : progress > 0.65
-                  ? (1 - progress) / 0.35
-                  : 1;
-              updateSlidePositions();
-            },
-          });
-
-      updateSlidePositions();
-    };
-
-    initialiseCarousel();
-
-    return () => {
-      disposed = true;
-      revealTrigger?.kill();
-
-      if (carousel) {
-        carousel.off("scroll", updateSlidePositions);
-        carousel.off("dragMove", updateSlidePositions);
-        carousel.off("settle", updateSlidePositions);
-        carousel.destroy();
-      }
-    };
+    return () => context.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.section}>
-      <h2>Our Services</h2>
-      <div ref={carouselRef} className={styles.carousel}>
-        {carouselServices.map((service, index) => (
+    <section ref={sectionRef} className={styles.section} aria-labelledby="services-section-title">
+      <div className={styles.intro}>
+        {/* <span>Our Services</span> */}
+        <h2 id="services-section-title">
+          <span className={styles.headingLine}>Care in every</span>
+          <span className={styles.headingLine}>dimension</span>
+        </h2>
+      </div>
+
+      <div ref={sceneRef} className={styles.scene}>
+        {services.map((service, index) => (
           <Link
-            href="/services"
-            className={styles.tile}
-            data-service-slide
-            key={`${service.title}-${index}`}
+            className={`${styles.card} ${styles[`card${index + 1}`]}`}
+            data-three-d-card
+            href={service.href}
+            key={service.title}
           >
-            <div className={styles.motion} data-service-motion>
-              <div className={styles.media} data-service-media>
-                <Image
-                  className={styles.image}
-                  data-service-image
-                  src={service.image}
-                  alt=""
-                  loading="eager"
-                  unoptimized
-                  draggable={false}
-                  sizes="(max-width: 767px) 160vw, (max-width: 991px) 96vw, 60vw"
-                  style={{ objectPosition: service.position }}
-                />
-              </div>
-              <span>{service.title}</span>
+            <Image
+              src={service.image}
+              alt=""
+              fill
+              sizes="(max-width: 700px) 52vw, 21vw"
+              className={styles.image}
+            />
+            <div className={styles.copy}>
+              <h3>{service.title}</h3>
             </div>
           </Link>
         ))}
