@@ -6,7 +6,6 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import academy from "../../images/homepage/aboutsection/relax1.png";
-import happyClient from "../../images/homepage/happyclients/happyclient1.png";
 import skinLaser from "../../images/homepage/aboutsection/interior.png";
 import spaSalon from "../../images/homepage/aboutsection/hair.png";
 import nail from "../../images/homepage/aboutsection/nailservice.png";

@@ -286,7 +286,7 @@
 
   .services {
     inset: auto 14px 14px;
-    display: grid;
+    display: none;
     gap: 7px;
   }
 

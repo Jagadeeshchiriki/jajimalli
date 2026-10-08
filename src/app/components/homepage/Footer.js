@@ -37,7 +37,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.main}>
-        <div className={styles.brandWrap}><Image className={styles.footerLogo} src={logo} alt="Jajimalli" sizes="(max-width: 800px) 190px, 245px" /><p>Beauty Beyond Occasions</p></div>
+        <div className={styles.brandWrap}><Image className={styles.footerLogo} src={logo} alt="Jajimalli" sizes="(max-width: 800px) 260px, 245px" /><p>Beauty Beyond Occasions</p></div>
         <div className={styles.location}>
           <a
             className={styles.mapLink}
@@ -48,7 +48,7 @@ export default function Footer() {
           >
             <PinIcon />
           </a>
-          <p>Chatrapati Rd, Opp Bean Board, BS Layout,<br />Seethammadhara, Vizag</p>
+          <p>Chatrapati Rd, Opp Bean Board, <br />BS Layout, Seethammadhara, Visakhapatnam</p>
           <a href="tel:+917093244555"><PhoneIcon /><span>+91 70932 44555</span></a>
         </div>
         <div className={styles.location}>
@@ -61,8 +61,8 @@ export default function Footer() {
           >
             <PinIcon />
           </a>
-          <p>Below Srinivasa Skin Hospital,<br />Rastrapathi Road, Tanuku</p>
-          <a href="tel:+910000000000"><PhoneIcon /><span>+91 00000 00000</span></a>
+          <p>Below Srinivasa Skin Hospital,<br />Rastrapathi Road, Venkatarayapuram, Tanuku</p>
+          <a href="tel:+910000000000"><PhoneIcon /><span>+91 91771 06666</span></a>
         </div>
       </div>
       <div className={styles.bottom}>

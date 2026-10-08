@@ -91,6 +91,7 @@ function ClientCarousel3D({ progress }) {
       mesh = new THREE.Mesh(new THREE.PlaneGeometry(1.55, 1.85, 20, 1), material);
       mesh.userData.index = index;
       mesh.userData.grayscale = 1;
+      mesh.userData.opacity = 1;
       carousel.add(mesh);
       return mesh;
     });
@@ -104,18 +105,28 @@ function ClientCarousel3D({ progress }) {
     let carouselOffset = 0;
     const layout = {
       radiusX: 7.25,
+      radiusY: 0,
       depth: 7.2,
       cardWidth: 1.55,
       cardHeight: 1.85,
+      vertical: false,
     };
 
-    const createCardGeometry = (width, height) => {
-      const geometry = new THREE.PlaneGeometry(width, height, 20, 1);
+    const createCardGeometry = (width, height, vertical = false) => {
+      const geometry = new THREE.PlaneGeometry(
+        width,
+        height,
+        vertical ? 1 : 20,
+        vertical ? 20 : 1,
+      );
       const positions = geometry.attributes.position;
 
       for (let index = 0; index < positions.count; index += 1) {
-        const normalizedX = positions.getX(index) / (width * 0.5);
-        positions.setZ(index, -Math.pow(normalizedX, 2) * width * 0.055);
+        const normalizedPosition = vertical
+          ? positions.getY(index) / (height * 0.5)
+          : positions.getX(index) / (width * 0.5);
+        const bendSize = vertical ? height : width;
+        positions.setZ(index, -Math.pow(normalizedPosition, 2) * bendSize * 0.055);
       }
 
       positions.needsUpdate = true;
@@ -150,15 +161,22 @@ function ClientCarousel3D({ progress }) {
     };
 
     const layoutCards = () => {
+      const verticalMobile = mount.clientWidth < 500;
       const mobile = mount.clientWidth < 800;
-      layout.radiusX = mobile ? 3.25 : Math.min(7.5, Math.max(6.7, camera.aspect * 3.8));
-      layout.depth = mobile ? 5.3 : 7.2;
-      layout.cardWidth = mobile ? 0.8 : 1.55;
-      layout.cardHeight = mobile ? 1 : 1.85;
+      layout.vertical = verticalMobile;
+      layout.radiusX = verticalMobile
+        ? 0
+        : mobile
+          ? 3.25
+          : Math.min(7.5, Math.max(6.7, camera.aspect * 3.8));
+      layout.radiusY = verticalMobile ? 4 : 0;
+      layout.depth = verticalMobile ? 5.6 : mobile ? 5.3 : 7.2;
+      layout.cardWidth = verticalMobile ? 1.45 : mobile ? 0.8 : 1.55;
+      layout.cardHeight = verticalMobile ? 1.85 : mobile ? 1 : 1.85;
 
       cards.forEach((card) => {
         card.geometry.dispose();
-        card.geometry = createCardGeometry(layout.cardWidth, layout.cardHeight);
+        card.geometry = createCardGeometry(layout.cardWidth, layout.cardHeight, layout.vertical);
         cropTextureToCard(card);
       });
     };
@@ -190,21 +208,50 @@ function ClientCarousel3D({ progress }) {
       const delta = Math.min((frameTime - lastFrameTime) / 1000, 0.05);
       lastFrameTime = frameTime;
       const easing = 1 - Math.exp(-delta * 5.5);
+      const revealEasing = 1 - Math.exp(-delta * 4);
       const targetOffset = progress.current * 1.6;
       carouselOffset = THREE.MathUtils.lerp(carouselOffset, targetOffset, easing);
 
-      cards.forEach((card, index) => {
+      const cardStates = cards.map((card, index) => {
         const rawPosition = index / cards.length + carouselOffset + 0.5;
         const wrappedPosition = ((rawPosition % 1) + 1) % 1 - 0.5;
-        const angle = wrappedPosition * 3;
+        return { card, wrappedPosition };
+      });
+      const visibleCards = layout.vertical
+        ? new Set(
+            [...cardStates]
+              .sort((a, b) => Math.abs(a.wrappedPosition) - Math.abs(b.wrappedPosition))
+              .slice(0, 3)
+              .map(({ card }) => card),
+          )
+        : null;
+
+      cardStates.forEach(({ card, wrappedPosition }) => {
+        const angle = wrappedPosition * (layout.vertical ? 5 : 3);
         const circularDepth = Math.max(0, Math.cos(angle));
         const depthPosition = Math.cos(angle) * layout.depth - layout.depth * 0.48;
-        card.position.set(
-          Math.sin(angle) * layout.radiusX,
-          -1.42 + circularDepth * 1.12,
-          depthPosition,
+        const targetOpacity = !layout.vertical || visibleCards.has(card) ? 1 : 0;
+        card.userData.opacity = THREE.MathUtils.lerp(
+          card.userData.opacity,
+          targetOpacity,
+          revealEasing,
         );
-        card.rotation.set(0, -angle * 0.72, -Math.sin(angle) * 0.055);
+        card.material.opacity = card.userData.opacity;
+        card.visible = targetOpacity > 0 || card.userData.opacity > 0.01;
+        card.userData.centerDistance = Math.abs(wrappedPosition);
+
+        if (layout.vertical) {
+          card.position.set(0, -Math.sin(angle) * layout.radiusY, depthPosition);
+          card.rotation.set(angle * 0.68, 0, 0);
+        } else {
+          card.position.set(
+            Math.sin(angle) * layout.radiusX,
+            -1.42 + circularDepth * 1.12,
+            depthPosition,
+          );
+          card.rotation.set(0, -angle * 0.72, -Math.sin(angle) * 0.055);
+        }
+
         const depthScale = 0.64 + circularDepth * 0.68;
         card.scale.setScalar(depthScale);
         card.renderOrder = Math.round((depthPosition + layout.depth) * 100);
@@ -229,7 +276,11 @@ function ClientCarousel3D({ progress }) {
       const hoveredCard = pointerActive ? raycaster.intersectObjects(cards, false)[0]?.object : null;
 
       cards.forEach((card) => {
-        const targetGrayscale = card === hoveredCard ? 0 : 1;
+        const targetGrayscale = layout.vertical
+          ? THREE.MathUtils.smoothstep(card.userData.centerDistance, 0.025, 0.12)
+          : card === hoveredCard
+            ? 0
+            : 1;
         card.userData.grayscale = THREE.MathUtils.lerp(
           card.userData.grayscale,
           targetGrayscale,

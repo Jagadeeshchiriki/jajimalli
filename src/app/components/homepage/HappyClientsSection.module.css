@@ -159,6 +159,18 @@
 
 }
 
+@media (max-width: 500px) {
+  .titleBlock h2 {
+    font-size: clamp(30px, 9vw, 38px);
+  }
+
+  .firstStatement p,
+  .finalStatement p {
+    font-size: clamp(21px, 6.5vw, 28px);
+    line-height: 1.15;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .section {
     height: auto;

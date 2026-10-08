@@ -104,7 +104,7 @@
   display: inline-flex;
   background: var(--green);
   color: white;
-  padding: 13px 36px;
+  padding: 10px 26px;
   font: 18px var(--font-afacad), sans-serif;
   border-radius: 8px;
   margin-top: 15px;
@@ -130,13 +130,13 @@
   }
 
   .copy h2 {
-    font-size: clamp(40px, 12vw, 58px);
+    font-size: clamp(30px, 7.5vw, 44px);
   }
 
   .copy p {
     margin-top: 22px;
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 18px;
+    line-height: 1.5;
   }
 }
 

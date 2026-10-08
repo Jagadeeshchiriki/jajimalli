@@ -121,7 +121,7 @@
 
 @media (max-width: 700px) {
   .section {
-    min-height: 620px;
+    min-height: 720px;
   }
 
   .intro {
@@ -139,7 +139,11 @@
   .intro h2 {
     margin-top: 0;
     font-size: clamp(30px, 8.8vw, 44px);
-    line-height: .92;
+    line-height: 1.2;
+  }
+
+  .scene {
+    transform: translateY(clamp(32px, 5svh, 42px));
   }
 
   .card {

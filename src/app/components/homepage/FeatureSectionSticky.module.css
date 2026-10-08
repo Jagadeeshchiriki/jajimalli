@@ -38,7 +38,7 @@
   height: 100vh;
   overflow: hidden;
   border-radius: 30px;
-  transform: scale(.6);
+  transform: scale(.7);
   transform-origin: center center;
   will-change: transform, border-radius;
 }
@@ -53,12 +53,12 @@
 
 @media (max-width: 800px) {
   .section {
-    padding-top: 90px;
+    padding-bottom: 10px;
   }
 
   .section h2 {
     padding: 0 20px;
-    font-size: clamp(40px, 12vw, 58px);
+    font-size: clamp(30px, 7.5vw, 44px);
   }
 
   .track {
@@ -69,8 +69,34 @@
   .sticky,
   .media {
     height: 100svh;
+
   }
 
+  .media {
+    transform: scale(.7);
+  }
+
+}
+
+@media (max-width: 450px) {
+  .section {
+    margin-top: -80px;
+  }
+
+  .section h2 {
+    padding: 0 10px;
+    font-size: clamp(19px, 6.5vw, 29px);
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  .track {
+    margin-top: -70px;
+  }
+
+  .media {
+    transform: scale(.7);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

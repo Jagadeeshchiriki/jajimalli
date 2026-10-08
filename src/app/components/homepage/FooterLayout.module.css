@@ -143,51 +143,128 @@
 @media (max-width: 800px) {
   .footer {
     min-height: 0;
-    padding: 50px 24px 30px;
+    padding: 56px clamp(20px, 5vw, 40px) 28px;
     border-radius: 0;
   }
 
   .main {
-    grid-template-columns: 1fr;
-    gap: 55px;
-    text-align: center;
-  }
-
-  .brandWrap,
-  .location,
-  .location:last-child {
-    justify-self: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0;
+    row-gap: 48px;
   }
 
   .brandWrap {
+    grid-column: 1 / -1;
+    justify-self: center;
     text-align: center;
   }
 
   .footerLogo {
-    width: 190px;
+    width: min(260px, 58vw);
     margin: auto;
   }
 
   .brandWrap p {
-    margin-top: 25px;
-    font-size: 17px;
+    margin-top: 14px;
+    font-size: clamp(18px, 3vw, 22px);
   }
 
-  .location h3 {
-    font-size: 23px;
+  .location,
+  .location:last-child {
+    width: 100%;
+    max-width: 360px;
+    min-width: 0;
+    padding: 0 clamp(14px, 3.5vw, 30px);
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr);
+    align-items: start;
+    column-gap: 14px;
+    row-gap: 18px;
+    text-align: left;
+  }
+
+  .location:nth-child(2) {
+    border-right: 1px solid rgba(49, 88, 78, .38);
+  }
+
+  .location .mapLink {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  .location .pinIcon {
+    width: 34px;
+    margin: 0;
+  }
+
+  .location p {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .location > a:last-child {
+    grid-column: 1 / -1;
+    justify-self: start;
+    justify-content: flex-start;
+    margin-top: 0;
   }
 
   .location p,
   .location a {
-    font-size: 15px;
+    font-size: clamp(16px, 2.5vw, 19px);
+  }
+
+  .location .phoneIcon {
+    width: 34px;
+    height: 34px;
+    margin-right: 5px;
   }
 
   .bottom {
-    margin-top: 40px;
-    padding-top: 28px;
+    margin-top: 48px;
+    padding: 26px 30px 0 0;
+    gap: 20px;
+    font-size: clamp(15px, 2.3vw, 18px);
+  }
+
+  .socials {
+    gap: 18px;
+  }
+
+  .socials svg {
+    width: 32px;
+  }
+}
+
+@media (max-width: 560px) {
+  .main {
+    grid-template-columns: 1fr;
+    row-gap: 38px;
+  }
+
+  .brandWrap {
+    grid-column: auto;
+  }
+
+  .location,
+  .location:last-child {
+    max-width: 430px;
+    padding: 0 6px;
+  }
+
+  .location:nth-child(2) {
+    padding-bottom: 38px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(49, 88, 78, .28);
+  }
+}
+
+@media (max-width: 400px) {
+  .bottom {
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
     text-align: center;
-    font-size: 14px;
   }
 }

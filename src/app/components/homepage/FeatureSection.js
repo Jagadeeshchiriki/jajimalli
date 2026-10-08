@@ -20,6 +20,11 @@ export default function FeatureSection() {
     if (!section || !track || !media) return;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const getInitialScale = () => {
+      if (window.innerWidth <= 450) return 0.7;
+      if (window.innerWidth <= 800) return 0.7;
+      return 0.7;
+    };
 
     if (prefersReducedMotion) return;
 
@@ -36,7 +41,7 @@ export default function FeatureSection() {
 
       timeline.fromTo(
         media,
-        { scale: 0.6, borderRadius: 30 },
+        { scale: getInitialScale, borderRadius: 30 },
         { scale: 1, borderRadius: 0, duration: 1, ease: "none" },
       );
 

@@ -14,7 +14,7 @@
 .menuTrigger[aria-expanded="true"] i:first-of-type { transform: translateY(4px) rotate(45deg); }
 .menuTrigger[aria-expanded="true"] i:nth-of-type(2) { opacity: 0; }
 .menuTrigger[aria-expanded="true"] i:last-of-type { transform: translateY(-4px) rotate(-45deg); }
-.menuOverlay { position: fixed; z-index: 50; inset: 0; pointer-events: none; visibility: hidden; transition: visibility 0s linear .5s; }
+.menuOverlay { position: fixed; z-index: 65; inset: 0; pointer-events: none; visibility: hidden; transition: visibility 0s linear .5s; }
 .menuOverlay.open { pointer-events: auto; visibility: visible; transition-delay: 0s; }
 .menuBackdrop { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: rgba(21,25,21,.14); opacity: 0; cursor: default; transition: opacity .4s ease; touch-action: pan-y; }
 .open .menuBackdrop { opacity: 1; }
@@ -63,13 +63,13 @@
   .menuClose span::after { top: 13px; width: 28px; height: 3px; }
   .menuPanel nav { margin-top: 70px; padding: 12px; border-radius: 20px; }
   .menuPanel nav a { padding: 16px; font-size: clamp(30px, 10vw, 40px); }
-  .scrollTopButton { right: 16px; bottom: 16px; width: 40px; height: 40px; }
+  .scrollTopButton { right: 16px; bottom: 36px; width: 40px; height: 40px; }
 }
 
 @media (max-width: 500px) {
   .brandLockup > a { width: 165px; }
 }
-@media screen {
+@media (max-width: 450px) {
   .brandLockup > a{ width: 150px;}
 }
 
