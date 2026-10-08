@@ -58,7 +58,7 @@ export default function FounderSection() {
 
   return (
     <section ref={sectionRef} className={styles.section} aria-labelledby="founder-title">
-      <div className={styles.inner}>
+      <div className={styles.founderinner}>
         <div className={styles.copy}>
           <h2 id="founder-title" data-founder-copy>
             A Vision For<br />Healthier, Happier Skin

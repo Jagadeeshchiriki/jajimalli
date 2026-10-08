@@ -20,7 +20,7 @@
   font-family: var(--font-aboreto), serif;
   font-size: clamp(42px, 4.7vw, 69px);
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.2;
   letter-spacing: -.045em;
 }
 
@@ -113,7 +113,7 @@
   .section {
     grid-template-columns: 1fr;
     gap: 70px;
-    padding: 90px 24px 100px;
+    padding: 90px 24px 20px;
   }
 
   .intro {
@@ -144,14 +144,12 @@
 @media (max-width: 800px) {
   .intro h2 {
     font-size: clamp(40px, 5.25vw, 42px);
-    line-height: 1.15;
   }
 }
 
 @media (max-width: 500px) {
   .intro h2 {
     font-size: clamp(30px, 9vw, 40px);
-    line-height: 1.1;
   }
 }
 
