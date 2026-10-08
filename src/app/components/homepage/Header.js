@@ -7,7 +7,7 @@ import { useLenis } from "lenis/react";
 // import Brand from "./Brand";
 import PageLoader from "./PageLoader";
 import styles from "./Header.module.css";
-import logo from "../../images/header/jajimallilogo2.png";
+import logo from "../../images/header/logo11.png";
 
 const links = [
   { href: "/", label: "Home" },
@@ -220,7 +220,7 @@ export default function Header() {
           tabIndex={showScrollTop ? 0 : -1}
           onClick={scrollToTop}
         >
-          <svg viewBox="0 0 34 34" aria-hidden="true">
+          <svg viewBox="0 0 25 25" aria-hidden="true">
             <path d="M12 19V5M6.5 10.5 12 5l5.5 5.5" />
           </svg>
         </button>

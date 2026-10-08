@@ -59,7 +59,7 @@
 
 .location p,
 .location a {
-  font-size: clamp(17px, 1.25vw, 26px);
+  font-size: clamp(22px, 1.5vw, 28px);
   line-height: 1.45;
 }
 

@@ -12,16 +12,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 const locations = [
   {
-    name: "Visakhapatnam",
-    image: visakhapatnam,
-    alt: "Aerial view of the Visakhapatnam coastline",
-    href: "https://www.google.com/maps/search/?api=1&query=Jajimalli+Seethammadhara+Visakhapatnam",
-  },
-  {
     name: "Tanuku",
     image: tanuku,
     alt: "Aerial view of Tanuku",
     href: "https://www.google.com/maps/search/?api=1&query=Jajimalli+Tanuku",
+  },
+  {
+    name: "Visakhapatnam",
+    image: visakhapatnam,
+    alt: "Aerial view of the Visakhapatnam coastline",
+    href: "https://www.google.com/maps/search/?api=1&query=Jajimalli+Seethammadhara+Visakhapatnam",
   },
 ];
 
