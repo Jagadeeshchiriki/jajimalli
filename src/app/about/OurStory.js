@@ -31,7 +31,7 @@ export default function OurStory() {
       });
 
       ScrollTrigger.create({
-        trigger: section,
+        trigger: reveal,
         start: "top bottom",
         end: "bottom top",
         onEnter: () => revealTween.restart(),

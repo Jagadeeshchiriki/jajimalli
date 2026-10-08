@@ -127,6 +127,31 @@
   .location {
     min-height: 62svh;
   }
+
+  .location a {
+    gap: clamp(10px, 2.5vw, 16px);
+    padding: clamp(11px, 2.2vw, 14px) clamp(13px, 3vw, 18px);
+    font-size: clamp(13px, 2.5vw, 16px);
+    letter-spacing: .1em;
+  }
+
+  .location a span {
+    font-size: clamp(12px, 2.2vw, 14px);
+  }
+}
+
+@media (max-width: 800px) {
+  .header h2 {
+    font-size: clamp(40px, 5.25vw, 42px);
+    line-height: 1.15;
+  }
+}
+
+@media (max-width: 500px) {
+  .header h2 {
+    font-size: clamp(30px, 9vw, 40px);
+    line-height: 1.15;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

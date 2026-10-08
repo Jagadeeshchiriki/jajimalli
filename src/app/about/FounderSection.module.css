@@ -46,7 +46,7 @@
   max-width: 670px;
   margin: 0;
   color: #464842;
-  font: 400 clamp(17px, 1.15vw, 20px)/1.7 var(--font-afacad), sans-serif;
+  font: 400 clamp(19px, 1.25vw, 22px)/1.7 var(--font-afacad), sans-serif;
 }
 
 .portrait {
@@ -124,7 +124,7 @@
   }
 
   .copy p {
-    font-size: 17px;
+    font-size: 19px;
     line-height: 1.65;
   }
 
@@ -132,6 +132,20 @@
     width: calc(100% - 12px);
   }
 
+}
+
+@media (max-width: 800px) {
+  .copy h2 {
+    font-size: clamp(40px, 5.25vw, 42px);
+    line-height: 1.15;
+  }
+}
+
+@media (max-width: 500px) {
+  .copy h2 {
+    font-size: clamp(30px, 9vw, 40px);
+    line-height: 1.1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -141,6 +141,20 @@
   .arrow { font-size: 17px; }
 }
 
+@media (max-width: 800px) {
+  .intro h2 {
+    font-size: clamp(40px, 5.25vw, 42px);
+    line-height: 1.15;
+  }
+}
+
+@media (max-width: 500px) {
+  .intro h2 {
+    font-size: clamp(30px, 9vw, 40px);
+    line-height: 1.1;
+  }
+}
+
 @media (hover: none) {
   .service {
     color: #fff;
