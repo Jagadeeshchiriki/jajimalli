@@ -8,8 +8,8 @@
   min-height: 720px;
   height: min(100svh, 920px);
   overflow: hidden;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: flex-end;
   isolation: isolate;
 }
 
@@ -22,15 +22,18 @@
 .heroShade {
   position: absolute;
   z-index: -1;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(34, 23, 15, .12), rgba(34, 23, 15, .2));
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 46%;
+  background: linear-gradient(180deg, rgba(20, 13, 9, 0), rgba(20, 13, 9, .78));
 }
 
 .heroCopy {
-  width: min(1450px, calc(100% - 48px));
+  width: 100%;
+  padding: 0 6% clamp(55px, 8vw, 110px);
   color: #ffffff;
-  text-align: center;
-  transform: translateY(4%);
+  text-align: left;
 }
 
 .heroCopy p {
@@ -39,15 +42,11 @@
 }
 
 .heroCopy h1 {
-  margin: 120px 0 0 0;
-  padding: clamp(20px, 2.5vw, 40px) clamp(18px, 4vw, 64px);
-
- 
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  margin: 0;
+  padding: 0;
   font-size: clamp(48px, 5.4vw, 72px);
   font-weight: 550;
-  line-height: 1.22;
+  line-height: 1.12;
   letter-spacing: -.025em;
 }
 
@@ -204,7 +203,8 @@
   }
 
   .heroCopy {
-    width: calc(100% - 34px);
+    width: 100%;
+    padding: 0 20px 55px;
   }
 
   .heroCopy p {
@@ -212,7 +212,11 @@
   }
 
   .heroCopy h1 {
-    font-size: clamp(22px, 6.2vw, 42px);
+    font-size: clamp(18px, 5vw, 32px);
+  }
+
+  .heroShade {
+    height: 52%;
   }
 
   .serviceList {
@@ -220,9 +224,14 @@
   }
 
   .serviceRow {
-    min-height: 330px;
+    min-height: 0;
+    flex-direction: column;
     align-items: flex-start;
-    padding-top: 42px;
+    padding: 42px 0 30px;
+  }
+
+  .serviceCopy {
+    width: 100%;
   }
 
   .serviceTitle {
@@ -231,23 +240,39 @@
   }
 
   .serviceTagline {
-    max-width: 80%;
-    margin: 14px 0 0;
-    font-size: 13px;
+    max-width: 86%;
+    margin: 16px 0 0;
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 500;
+    line-height: 1.4;
+    text-shadow: none;
   }
 
   .preview {
-    top: auto;
-    right: 0;
-    bottom: 22px;
-    width: 82%;
+    position: relative;
+    inset: auto;
+    display: block;
+    width: 100%;
+    margin-top: 28px;
+    align-self: center;
     opacity: 1;
-    transform: rotate(2deg);
+    transform: none;
+    transition: none;
+  }
+
+  .preview img {
+    transform: none;
+    transition: none;
   }
 
   .serviceRow:hover .preview,
   .serviceRow:focus-visible .preview {
-    transform: translateX(-4px) rotate(0);
+    transform: none;
+  }
+
+  .serviceRow:hover .preview img,
+  .serviceRow:focus-visible .preview img {
+    transform: none;
   }
 
   .serviceRow:hover .serviceCopy,
@@ -256,8 +281,8 @@
   }
 
   .arrow {
-    right: 4px;
-    bottom: 28px;
+    right: 14px;
+    bottom: 44px;
     opacity: 1;
     background: var(--cream);
     transform: none;
