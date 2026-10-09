@@ -1,6 +1,6 @@
 import spaSalon from "../images/servicepage/spasalon.png";
 import skinLaser from "../images/servicepage/skinlaser.png";
-import beautyAcademy from "../images/servicepage/beautyacademy1.png";
+import beautyAcademy from "../images/servicepage/professionalmakeup1.png";
 import microblading from "../images/servicepage/microblading.png";
 import hydraFacial from "../images/servicepage/hydrafacial.png";
 import bridalMakeup from "../images/homepage/bridalmakeup.png";
@@ -21,6 +21,22 @@ import professionalMakeup from "../images/servicepage/professionalmakeup1.png";
 import prp from "../images/servicepage/prp-treatment.png";
 import gfc from "../images/servicepage/gfc.png";
 import dpn from "../images/servicepage/dpn.png";
+import oilMassage from "../images/servicepage/oilmassage.png";
+import maniPedi from "../images/servicepage/manipedi.png";
+import parlorcourse from "../images/servicepage/parlorcourse.png";
+
+export const academyCourseNames = [
+  "Nail Art & Care",
+  "Bridal Makeup",
+  "Saree Draping & Pre-Pleating",
+  "Hair Cuts",
+  "Hair Styles",
+  "Manicure ",
+  "Pedicure",
+  "Mehndi",
+  "Facial & Cleanups",
+  "Hair Treatments",
+];
 
 
 export const services = [
@@ -43,6 +59,9 @@ export const services = [
       { title: "Hair Cuts", image: hairCut, description: "Considered cuts shaped around your texture, lifestyle and personal style.", supporting: "Consultation · Precision shaping" },
       { title: "Hair Extensions", image: hairExtensions, description: "Seamlessly blended length and volume with a natural, comfortable finish.", supporting: "Custom matching · Expert placement" },
       { title: "Hair Styles", image: hairStyle, description: "Modern styling and occasion-ready looks shaped with lasting polish.", supporting: "Everyday finish · Event styling" },
+      { title: "Manicure & Pedicure", image: maniPedi, description: "A rejuvenating manicure and pedicure ritual to care for your hands and feet, leaving them smooth, refreshed, and beautifully groomed.", supporting: "Nail care · Exfoliation · Deep hydration" },
+      { title: "Oil Massage", image: oilMassage, description: "A soothing full-body oil massage designed to ease tension, nourish the skin, and promote deep relaxation.", supporting: "Relaxation · Skin nourishment · Stress relief" },
+      { title: "Nail Art & Care", image: academyNails, description: "Beautifully crafted nail art featuring creative designs, elegant finishes, and personalized styles to complement every occasion.", supporting: "Creative designs · Elegant finishes · Personalized styles" },
       { title: "Mehndi", image: Mehndi, description: "Intricate traditional and contemporary designs created with a fine artistic hand.", supporting: "Bridal · Festive · Bespoke" },
     ],
   },
@@ -73,9 +92,7 @@ export const services = [
     offeringsTitle: "Professional Beauty Courses",
     image: beautyAcademy,
     offerings: [
-      { title: "Professional Makeup", image: professionalMakeup, description: "Build confident technique across complexion, colour and occasion artistry.", supporting: "Demonstration · Guided practice" },
-      { title: "Hair Styling", image: academyHair, description: "Learn foundational and advanced styling through practical salon-led training.", supporting: "Technique · Form · Finish" },
-      { title: "Nail Art & Care", image: academyNails, description: "Master neat preparation, lasting finishes and expressive nail artistry.", supporting: "Care fundamentals · Creative design" },
+      { title: "Discover the Art of Complete Beauty Care", image: parlorcourse, description: "Build your expertise in essential salon treatments, from rejuvenating facials and skincare to hair care, waxing, and grooming. Learn practical techniques that help you deliver personalized beauty services with confidence and professional precision.", supporting: "Demonstration · Guided practice" },
     ],
   },
 ];
