@@ -50,6 +50,29 @@
   object-fit: cover;
 }
 
+@media (max-width: 1600px) {
+  .track {
+    margin-top: calc(-15vh + 48px);
+  }
+}
+
+@media (max-width: 1400px) {
+  .track {
+    margin-top: calc(-15vh + 42px);
+  }
+}
+
+@media (max-width: 1280px) {
+  .track {
+    margin-top: calc(-15vh + 36px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .track {
+    margin-top: calc(-15vh + 30px);
+  }
+}
 
 @media (max-width: 800px) {
   .section {
