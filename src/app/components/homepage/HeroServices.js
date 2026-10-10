@@ -1,48 +1,50 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./HeroSection.module.css";
 
 export default function HeroServices({ services }) {
   const [activeService, setActiveService] = useState(null);
-  const servicesRef = useRef(null);
 
   useEffect(() => {
     const closeCard = (event) => {
-      if (window.innerWidth <= 800 && !servicesRef.current?.contains(event.target)) {
-        setActiveService(null);
-      }
+      if (window.innerWidth > 800) return;
+      if (event.target.closest?.(`.${styles.marker}, .${styles.serviceInfo}`)) return;
+      setActiveService(null);
     };
 
     document.addEventListener("pointerdown", closeCard);
     return () => document.removeEventListener("pointerdown", closeCard);
   }, []);
 
-  const handleClick = (event, serviceNumber) => {
-    if (window.innerWidth <= 800 && activeService !== serviceNumber) {
-      event.preventDefault();
-      setActiveService(serviceNumber);
-    }
+  const handleMarkerClick = (event, serviceNumber) => {
+    if (window.innerWidth > 800) return;
+    event.preventDefault();
+    setActiveService((currentService) => currentService === serviceNumber ? null : serviceNumber);
   };
 
   return (
-    <nav ref={servicesRef} className={styles.services} aria-label="Featured services">
+    <nav className={styles.services} aria-label="Featured services">
       {services.map((service) => (
-        <Link
+        <div
           className={`${styles.serviceLink} ${styles[service.position]}${activeService === service.number ? ` ${styles.serviceOpen}` : ""}`}
-          href={service.href}
           key={service.number}
-          aria-label={`${service.number} ${service.title}: ${service.description}`}
-          onClick={(event) => handleClick(event, service.number)}
         >
-          <span className={styles.marker} aria-hidden="true"><span>{service.number}</span></span>
-          <span className={styles.serviceInfo}>
+          <Link
+            className={styles.marker}
+            href={service.href}
+            aria-label={`${service.number} ${service.title}`}
+            onClick={(event) => handleMarkerClick(event, service.number)}
+          >
+            <span>{service.number}</span>
+          </Link>
+          <Link className={styles.serviceInfo} href={service.href} aria-label={`View ${service.title} services`}>
             <span className={styles.serviceTitle}>{service.title}</span>
             <span className={styles.serviceDescription}>{service.description}</span>
             <span className={styles.serviceCta}>Explore services <span aria-hidden="true">↗</span></span>
-          </span>
-        </Link>
+          </Link>
+        </div>
       ))}
     </nav>
   );

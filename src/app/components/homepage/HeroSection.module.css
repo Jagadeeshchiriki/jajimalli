@@ -209,7 +209,7 @@
 }
 
 .serviceLink:hover .marker,
-.serviceLink:focus-visible .marker {
+.serviceLink:focus-within .marker {
   background: #dfbd72;
   color: #244b40;
   transform: scale(1.06);
@@ -217,12 +217,12 @@
 }
 
 .serviceLink:hover .marker::before,
-.serviceLink:focus-visible .marker::before {
+.serviceLink:focus-within .marker::before {
   border-style: solid;
 }
 
 .serviceLink:hover .serviceInfo,
-.serviceLink:focus-visible .serviceInfo {
+.serviceLink:focus-within .serviceInfo {
   opacity: 1;
   clip-path: inset(0);
   transform: translateX(0);
@@ -290,17 +290,17 @@
   }
 
   .spa {
-    top: 54%;
+    top: 50%;
     left: 20%;
   }
 
   .laser {
-    top: 79%;
+    top: 71%;
     left: 43%;
   }
 
   .academy {
-    top: 46%;
+    top: 42%;
     right: 14%;
     flex-direction: row-reverse;
   }
@@ -327,7 +327,7 @@
   }
 
   .serviceLink:hover .serviceInfo,
-  .serviceLink:focus-visible .serviceInfo {
+  .serviceLink:focus-within .serviceInfo {
     opacity: 0;
     pointer-events: none;
   }
