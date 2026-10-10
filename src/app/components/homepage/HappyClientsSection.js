@@ -209,7 +209,7 @@ function ClientCarousel3D({ progress }) {
       lastFrameTime = frameTime;
       const easing = 1 - Math.exp(-delta * 5.5);
       const revealEasing = 1 - Math.exp(-delta * 4);
-      const targetOffset = progress.current * 1.6;
+      const targetOffset = progress.current * 1.6 * (layout.vertical ? -1 : 1);
       carouselOffset = THREE.MathUtils.lerp(carouselOffset, targetOffset, easing);
 
       const cardStates = cards.map((card, index) => {
