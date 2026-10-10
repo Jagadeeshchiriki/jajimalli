@@ -87,7 +87,96 @@
    color: var(--ink);
 }
 
-@media (max-width: 900px) {
+@media (min-width: 1601px) {
+  .founderinner {
+    align-items: start;
+    gap: 80px;
+    width: 100%;
+
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1600px) {
+  .founderinner {
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+    align-items: start;
+    gap: 88px;
+    padding: 96px 64px;
+  }
+
+  .copy h2 {
+    font-size: clamp(52px, 4vw, 68px);
+  }
+
+  .portrait {
+    width: min(100%, 520px);
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1400px) {
+  .founderinner {
+    grid-template-columns: minmax(0, 1.05fr) minmax(350px, .95fr);
+    gap: 68px;
+    padding: 88px 52px;
+  }
+
+  .copy h2 {
+    font-size: clamp(48px, 4vw, 60px);
+  }
+
+  .copy p {
+    font-size: clamp(18px, 1.4vw, 20px);
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1280px) {
+  .founderinner {
+    grid-template-columns: minmax(0, 1fr) minmax(330px, .9fr);
+    gap: 48px;
+    padding: 82px 40px;
+  }
+
+  .copy h2 {
+    font-size: clamp(44px, 4.1vw, 52px);
+  }
+
+  .rule {
+    margin: 34px 0 28px;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1020px) {
+  .founderinner {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, .82fr);
+    gap: 34px;
+    padding: 76px 28px;
+  }
+
+  .copy h2 {
+    font-size: clamp(40px, 4.6vw, 47px);
+  }
+
+  .copy p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .portrait {
+    width: min(100%, 450px);
+  }
+}
+
+@media (min-width: 801px) {
+  .caption strong {
+    font-size: clamp(21px, 1.5vw, 28px);
+  }
+
+  .caption span {
+    font-size: clamp(13px, 1vw, 16px);
+  }
+}
+
+@media (max-width: 800px) {
   .founderinner {
     grid-template-columns: 1fr;
     gap: 64px;
@@ -105,6 +194,14 @@
   .portrait {
     width: min(88vw, 560px);
     justify-self: center;
+  }
+
+  .caption strong {
+    font-size: clamp(20px, 5vw, 24px);
+  }
+
+  .caption span {
+    font-size: clamp(13px, 3.5vw, 16px);
   }
 }
 

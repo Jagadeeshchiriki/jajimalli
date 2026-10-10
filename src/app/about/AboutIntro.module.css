@@ -271,10 +271,10 @@
     font-size: clamp(25px, 4vw, 32px);
   }
 
-  .cardOne { top: 12%; left: 3%; width: 48vw; height: 46vh; }
-  .cardTwo { top: 19%; right: 3%; width: 39vw; height: 53vh; }
-  .cardThree { top: 22%; left: 3%; width: 50vw; height: 42vh; }
-  .cardFour { top: 14%; right: 3%; width: 40vw; height: 57vh; }
+  .cardOne { top: 12%; left: 3%; width: 48vw; height: 50vh; }
+  .cardTwo { top: 19%; right: 3%; width: 39vw; height: 50vh; }
+  .cardThree { top: 22%; left: 3%; width: 50vw; height: 50vh; }
+  .cardFour { top: 14%; right: 3%; width: 40vw; height: 50vh; }
 
   .scrollCue {
     right: 18px;

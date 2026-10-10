@@ -51,8 +51,13 @@ export default function AboutIntro() {
     const context = gsap.context(() => {
       gsap.set([secondHero, thirdHero], { clipPath: "inset(100% 0 0 0)", scale: 1.07 });
       gsap.set(firstHero, { scale: 1 });
-      gsap.set(heroCopies[0], { autoAlpha: 1, y: 0 });
-      gsap.set(heroCopies.slice(1), { autoAlpha: 0, y: 32 });
+      gsap.set(heroCopies, {
+        transformPerspective: 900,
+        transformOrigin: "50% 50%",
+        backfaceVisibility: "hidden",
+      });
+      gsap.set(heroCopies[0], { autoAlpha: 1, y: 0, rotationX: 0 });
+      gsap.set(heroCopies.slice(1), { autoAlpha: 0, y: 0, rotationX: -180 });
       gsap.set(backdrop, { backdropFilter: "blur(0px)" });
       gsap.set(storyCopy, { autoAlpha: 0 });
       gsap.set(storyTexts[0], { autoAlpha: 1, y: 0 });
@@ -107,8 +112,8 @@ export default function AboutIntro() {
           ease: "power2.inOut",
         }, 0)
         .to(firstHero, { scale: 1.045, duration: 1.15, ease: "none" }, 0)
-        .to(heroCopies[0], { autoAlpha: 0, y: -30, duration: 0.38, ease: "power2.in" }, 0.28)
-        .to(heroCopies[1], { autoAlpha: 1, y: 0, duration: 0.48, ease: "power2.out" }, 0.48)
+        .to(heroCopies[0], { autoAlpha: 0, rotationX: 180, duration: 0.38, ease: "power2.in" }, 0.28)
+        .to(heroCopies[1], { autoAlpha: 1, rotationX: 0, duration: 0.48, ease: "power2.out" }, 0.48)
         .to(thirdHero, {
           clipPath: "inset(0% 0 0 0)",
           scale: 1,
@@ -116,8 +121,8 @@ export default function AboutIntro() {
           ease: "power2.inOut",
         }, 1.15)
         .to(secondHero, { scale: 1.045, duration: 1.15, ease: "none" }, 1.15)
-        .to(heroCopies[1], { autoAlpha: 0, y: -30, duration: 0.38, ease: "power2.in" }, 1.43)
-        .to(heroCopies[2], { autoAlpha: 1, y: 0, duration: 0.48, ease: "power2.out" }, 1.63)
+        .to(heroCopies[1], { autoAlpha: 0, rotationX: 180, duration: 0.38, ease: "power2.in" }, 1.43)
+        .to(heroCopies[2], { autoAlpha: 1, rotationX: 0, duration: 0.48, ease: "power2.out" }, 1.63)
         .to(backdrop, {
           backdropFilter: "blur(18px)",
           backgroundColor: "rgba(8, 15, 11, .3)",
@@ -126,8 +131,7 @@ export default function AboutIntro() {
         }, 2.23)
         .to(heroCopies[2], {
           autoAlpha: 0,
-          y: -52,
-          scale: 0.96,
+          rotationX: 180,
           duration: 0.62,
           ease: "power2.in",
         }, 2.27)
