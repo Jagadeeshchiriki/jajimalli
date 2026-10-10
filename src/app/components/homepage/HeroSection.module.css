@@ -285,57 +285,80 @@
   }
 
   .services {
-    inset: auto 14px 14px;
-    display: none;
-    gap: 7px;
+    inset: 0;
+    display: block;
   }
 
-  .serviceLink,
-  .spa,
-  .laser,
+  .spa {
+    top: 54%;
+    left: 20%;
+  }
+
+  .laser {
+    top: 79%;
+    left: 43%;
+  }
+
   .academy {
-    position: static;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 40px minmax(0, 1fr);
-    gap: 10px;
-    flex-direction: initial;
+    top: 46%;
+    right: 14%;
+    flex-direction: row-reverse;
   }
 
   .marker {
-    width: 38px;
+    width: 34px;
   }
 
   .serviceInfo,
   .academy .serviceInfo {
-    width: auto;
-    margin: 0;
-    padding: 14px 16px;
-    border: 1px solid rgba(255, 255, 255, .32);
-    background: rgba(255, 255, 255, .14);
-    color: #fff;
-    opacity: 1;
-    clip-path: none;
-    transform: none;
-    pointer-events: auto;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    width: clamp(140px, 38vw, 180px);
+    margin: 0 0 0 8px;
+    padding: 9px 10px;
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transform: translateX(-8px);
+    pointer-events: none;
   }
 
-  .serviceLabel,
-  .serviceDescription,
-  .serviceCta {
-    display: none;
+  .academy .serviceInfo {
+    margin: 0 8px 0 0;
+    clip-path: inset(0 0 0 100%);
+    transform: translateX(8px);
+  }
+
+  .serviceLink:hover .serviceInfo,
+  .serviceLink:focus-visible .serviceInfo {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .serviceLink.serviceOpen .serviceInfo {
+    opacity: 1;
+    clip-path: inset(0);
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .serviceLink.serviceOpen .marker {
+    background: #dfbd72;
+    color: #244b40;
+    transform: scale(1.06);
+    animation: none;
   }
 
   .serviceTitle {
-    font: 500 15px/1.2 var(--font-afacad), sans-serif;
-    letter-spacing: .08em;
-    text-transform: uppercase;
+    font-size: clamp(14px, 3.8vw, 18px);
   }
 
-  .serviceTitle::before {
-    content: "Explore ";
+  .serviceDescription {
+    margin-top: 5px;
+    font-size: 9px;
+    line-height: 1.3;
+  }
+
+  .serviceCta {
+    margin-top: 6px;
+    font-size: 8px;
   }
 }
 

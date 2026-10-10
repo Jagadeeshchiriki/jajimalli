@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import { DM_Sans } from "next/font/google";
 import heroBackground from "../../images/homepage/cta/hero-background.png";
 import heroWoman from "../../images/homepage/cta/hero-woman.png";
+import HeroServices from "./HeroServices";
 import styles from "./HeroSection.module.css";
 
 const dmSansLight = DM_Sans({
@@ -58,23 +58,7 @@ export default function HeroSection() {
         <Image src={heroWoman} alt="Jajimalli client portrait" sizes="(max-width: 800px) 150vw, 100vw" />
       </div>
 
-      <nav className={styles.services} aria-label="Featured services">
-        {services.map((service) => (
-          <Link
-            className={`${styles.serviceLink} ${styles[service.position]}`}
-            href={service.href}
-            key={service.number}
-            aria-label={`${service.number} ${service.title}: ${service.description}`}
-          >
-            <span className={styles.marker} aria-hidden="true"><span>{service.number}</span></span>
-            <span className={styles.serviceInfo}>
-              <span className={styles.serviceTitle}>{service.title}</span>
-              <span className={styles.serviceDescription}>{service.description}</span>
-              <span className={styles.serviceCta}>Explore services <span aria-hidden="true">↗</span></span>
-            </span>
-          </Link>
-        ))}
-      </nav>
+      <HeroServices services={services} />
     </section>
   );
 }
