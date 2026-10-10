@@ -1,7 +1,8 @@
 import styles from "./AcademyCourseMarquee.module.css";
 
-const splitIntoRows = (courses, rowCount) => (
-  Array.from({ length: rowCount }, (_, rowIndex) => courses.filter((_, index) => index % rowCount === rowIndex))
+const splitIntoRows = (courses, rowCount) => Array.from(
+  { length: rowCount },
+  (_, rowIndex) => courses.filter((_, index) => index % rowCount === rowIndex),
 );
 
 export default function AcademyCourseMarquee({ courses }) {

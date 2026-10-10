@@ -97,6 +97,30 @@
   to { transform: translateX(-50%); }
 }
 
+@media (min-width: 1400px) and (max-width: 1599.98px) {
+  .heading h2 {
+    font-size: 58px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  .heading h2 {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1199.98px) {
+  .heading h2 {
+    font-size: 44px;
+  }
+}
+
+@media (min-width: 800.02px) and (max-width: 999.98px) {
+  .heading h2 {
+    font-size: 38px;
+  }
+}
+
 @media (max-width: 800px) {
   .section {
     padding: 80px 0 100px;
