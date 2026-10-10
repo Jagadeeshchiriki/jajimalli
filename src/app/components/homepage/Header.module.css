@@ -71,6 +71,7 @@
 }
 @media (max-width: 450px) {
   .brandLockup > a{ width: 130px;}
+  .header { padding: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
