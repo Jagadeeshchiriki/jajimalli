@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../../images/header/logo2.png";
+import logo from "../../images/footer/jajimallifooterlogo.png";
 import styles from "./FooterLayout.module.css";
 
 function PinIcon() {

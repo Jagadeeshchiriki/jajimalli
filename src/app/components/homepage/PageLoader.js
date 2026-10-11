@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import logo from "../../images/header/logo2.png";
+import logo from "../../images/footer/jajimallifooterlogo.png";
 import styles from "./PageLoader.module.css";
 
 export default function PageLoader() {

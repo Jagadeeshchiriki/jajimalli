@@ -1,5 +1,5 @@
 import Link from "next/link";
-import logo from "../../images/header/logo2.png";
+import logo from "../../images/footer/jajimallifooterlogo2.png";
 import styles from "./Brand.module.css";
 
 export default function Brand() {

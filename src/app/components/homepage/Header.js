@@ -7,7 +7,7 @@ import { useLenis } from "lenis/react";
 // import Brand from "./Brand";
 import PageLoader from "./PageLoader";
 import styles from "./Header.module.css";
-import logo from "../../images/header/logo11.png";
+import logo from "../../images/header/jajimallilogo.png";
 
 const links = [
   { href: "/", label: "Home" },
