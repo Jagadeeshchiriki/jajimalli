@@ -144,7 +144,9 @@ export default function ServiceShowcase({ category, offerings }) {
         <div ref={textStageRef} className={styles.textStage}>
           {offerings.map((offering) => (
             <article className={styles.copy} data-service-copy key={offering.title}>
-              <h2>{offering.title}</h2>
+              <h2 className={offering.title === "Lice Treatment" ? styles.singleLineTitle : undefined}>
+                {offering.title}
+              </h2>
               <p>{offering.description}</p>
             </article>
           ))}

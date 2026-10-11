@@ -212,7 +212,7 @@
   }
 
   .heroCopy h1 {
-    font-size: clamp(18px, 5vw, 32px);
+    font-size: clamp(32px, 6vw, 65px);
   }
 
   .heroShade {
@@ -286,6 +286,21 @@
     opacity: 1;
     background: var(--cream);
     transform: none;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .heroCopy h1 {
+    font-size: clamp(25px, 10vw, 58px);
+  }
+  .heroLine{
+    text-wrap: balance;
+    white-space: normal;
+  }
+
+  .heroLine + .heroLine {
+    font-size: .79em;
   }
 
 }
