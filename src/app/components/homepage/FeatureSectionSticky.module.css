@@ -18,7 +18,7 @@
   position: relative;
   z-index: 1;
   height: 300vh;
-  margin-top: -130px;
+  margin-top: calc(-15vh + 48px);
 }
 
 .sticky {

@@ -5,9 +5,9 @@ import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import academy from "../../images/homepage/servicesection/academy2.png";
-import skinLaser from "../../images/homepage/servicesection/skinlaser.png";
-import spaSalon from "../../images/homepage/servicesection/salon.png";
+import academy from "../../images/homepage/servicesection/academy2.avif";
+import skinLaser from "../../images/homepage/servicesection/skinlaser.avif";
+import spaSalon from "../../images/homepage/servicesection/salon.avif";
 import styles from "./ServicesSection.module.css";
 
 gsap.registerPlugin(ScrollTrigger);

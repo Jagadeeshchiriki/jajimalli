@@ -1,6 +1,6 @@
 import Image from "next/image";
-import makeupcourse from "../../images/servicepage/beautyacademy (2).png";
-import parlorCourse from "../../images/servicepage/parlorcourse.png";
+import makeupcourse from "../../images/servicepage/makeup_course.avif";
+import parlorCourse from "../../images/servicepage/parlorcourse.avif";
 import ServiceDetailPage from "../components/ServiceDetailPage";
 import { academyCourseNames, getService } from "../serviceData";
 import AcademyCourseMarquee from "./AcademyCourseMarquee";

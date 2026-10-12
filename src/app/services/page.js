@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import introImage from "../images/servicepage/about_intro.png";
+import introImage from "../images/servicepage/about_intro.avif";
 import { services } from "./serviceData";
 import styles from "./ServicesPage.module.css";
 

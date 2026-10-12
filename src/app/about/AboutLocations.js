@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import visakhapatnam from "../images/aboutpage/location1.png";
-import tanuku from "../images/aboutpage/location2.png";
+import visakhapatnam from "../images/aboutpage/location1.avif";
+import tanuku from "../images/aboutpage/location2.avif";
 import styles from "./AboutLocations.module.css";
 
 gsap.registerPlugin(ScrollTrigger);

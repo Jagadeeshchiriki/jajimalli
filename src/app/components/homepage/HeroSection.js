@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { DM_Sans } from "next/font/google";
-import heroBackground from "../../images/homepage/cta/hero-background.png";
-import heroWoman from "../../images/homepage/cta/hero-woman.png";
+import heroBackground from "../../images/homepage/hero-background.avif";
+import heroWoman from "../../images/homepage/hero-woman.avif";
 import HeroServices from "./HeroServices";
 import styles from "./HeroSection.module.css";
 
