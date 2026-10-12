@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import academy from "../../images/homepage/aboutsection/relax1.png";
 import skinLaser from "../../images/homepage/aboutsection/interior.png";
 import spaSalon from "../../images/homepage/aboutsection/hair.png";
-import nail from "../../images/homepage/aboutsection/mani-pedi.png";
+import manipedi from "../../images/homepage/aboutsection/mani-pedi.png";
 import styles from "./AboutSection.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,7 +19,7 @@ const imagePairs = [
     { src: academy, alt: "Jajimalli beauty academy experience", position: styles.cardTwo },
   ],
   [
-    { src: nail, alt: "Jajimalli client after her salon visit", position: styles.cardThree },
+    { src: manipedi, alt: "Jajimalli client after her salon visit", position: styles.cardThree },
     { src: spaSalon, alt: "Jajimalli salon experience", position: styles.cardFour },
   ],
 ];
