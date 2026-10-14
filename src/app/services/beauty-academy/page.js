@@ -3,14 +3,19 @@ import makeupcourse from "../../images/servicepage/makeup_course.avif";
 import parlorCourse from "../../images/servicepage/parlorcourse.avif";
 import ServiceDetailPage from "../components/ServiceDetailPage";
 import { academyCourseNames, getService } from "../serviceData";
+import { seoKeywords } from "../../seoKeywords";
 import AcademyCourseMarquee from "./AcademyCourseMarquee";
 import styles from "./BeautyAcademy.module.css";
 
 const service = getService("beauty-academy");
 
 export const metadata = {
-  title: service.shortTitle,
-  description: service.description,
+  title: "Beauty Academy in Visakhapatnam & Tanuku",
+  description: "Professional beauty academy in Visakhapatnam and Tanuku offering practical makeup, salon, hair, nail and beauty training.",
+  keywords: seoKeywords.beautyAcademy,
+  alternates: {
+    canonical: "/services/beauty-academy/",
+  },
 };
 
 export default function BeautyAcademyPage() {

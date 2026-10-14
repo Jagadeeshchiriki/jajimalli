@@ -1,10 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import introImage from "../images/servicepage/about_intro.avif";
+import { seoKeywords } from "../seoKeywords";
 import { services } from "./serviceData";
 import styles from "./ServicesPage.module.css";
 
-export const metadata = { title: "Services" };
+export const metadata = {
+  title: "Spa Salon & Skin Services in Visakhapatnam & Tanuku",
+  description: "Explore salon and spa services in Visakhapatnam and Tanuku, including beauty, hair, bridal, skin laser and academy services.",
+  keywords: seoKeywords.services,
+  alternates: {
+    canonical: "/services/",
+  },
+};
 
 export default function ServicesPage() {
   return (
